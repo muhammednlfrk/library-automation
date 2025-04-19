@@ -46,7 +46,7 @@ partial class MemberManagementForm
         // 
         _lblNumber.DY = -19;
         _lblNumber.LabeledControl = _txtBoxNumber;
-        _lblNumber.Location = new Point(501, 2);
+        _lblNumber.Location = new Point(481, 2);
         _lblNumber.Name = "_lblNumber";
         _lblNumber.Position = Syncfusion.Windows.Forms.Tools.AutoLabelPosition.Top;
         _lblNumber.Size = new Size(84, 15);
@@ -56,8 +56,8 @@ partial class MemberManagementForm
         // _txtBoxNumber
         // 
         _txtBoxNumber.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        _txtBoxNumber.BeforeTouchSize = new Size(490, 23);
-        _txtBoxNumber.Location = new Point(501, 21);
+        _txtBoxNumber.BeforeTouchSize = new Size(470, 23);
+        _txtBoxNumber.Location = new Point(481, 21);
         _txtBoxNumber.MaxLength = 9;
         _txtBoxNumber.Name = "_txtBoxNumber";
         _txtBoxNumber.Size = new Size(196, 23);
@@ -68,10 +68,10 @@ partial class MemberManagementForm
         // _txtBoxSearch
         // 
         _txtBoxSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-        _txtBoxSearch.BeforeTouchSize = new Size(490, 23);
+        _txtBoxSearch.BeforeTouchSize = new Size(470, 23);
         _txtBoxSearch.Location = new Point(5, 21);
         _txtBoxSearch.Name = "_txtBoxSearch";
-        _txtBoxSearch.Size = new Size(490, 23);
+        _txtBoxSearch.Size = new Size(470, 23);
         _txtBoxSearch.TabIndex = 23;
         _txtBoxSearch.TextChanged += _txtBoxSearch_TextChanged;
         // 
@@ -96,7 +96,7 @@ partial class MemberManagementForm
         _dataGridMember.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
         _dataGridMember.Location = new Point(5, 50);
         _dataGridMember.Name = "_dataGridMember";
-        _dataGridMember.Size = new Size(794, 456);
+        _dataGridMember.Size = new Size(774, 406);
         _dataGridMember.Style.BorderColor = Color.FromArgb(100, 100, 100);
         _dataGridMember.Style.CheckBoxStyle.CheckedBackColor = Color.FromArgb(0, 120, 215);
         _dataGridMember.Style.CheckBoxStyle.CheckedBorderColor = Color.FromArgb(0, 120, 215);
@@ -111,7 +111,7 @@ partial class MemberManagementForm
         _btnAdd.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         _btnAdd.Font = new Font("Segoe UI Semibold", 9F);
         _btnAdd.ImageSize = new Size(16, 16);
-        _btnAdd.Location = new Point(771, 16);
+        _btnAdd.Location = new Point(751, 16);
         _btnAdd.Name = "_btnAdd";
         _btnAdd.Size = new Size(28, 28);
         _btnAdd.Style.Image = Properties.Resources.add;
@@ -124,7 +124,7 @@ partial class MemberManagementForm
         _btnDelete.Enabled = false;
         _btnDelete.Font = new Font("Segoe UI Semibold", 9F);
         _btnDelete.ImageSize = new Size(16, 16);
-        _btnDelete.Location = new Point(737, 16);
+        _btnDelete.Location = new Point(717, 16);
         _btnDelete.Name = "_btnDelete";
         _btnDelete.Size = new Size(28, 28);
         _btnDelete.Style.Image = Properties.Resources.unavailable;
@@ -136,7 +136,7 @@ partial class MemberManagementForm
         _btnResetPassword.Enabled = false;
         _btnResetPassword.Font = new Font("Segoe UI Semibold", 9F);
         _btnResetPassword.ImageSize = new Size(16, 16);
-        _btnResetPassword.Location = new Point(703, 16);
+        _btnResetPassword.Location = new Point(683, 16);
         _btnResetPassword.Name = "_btnResetPassword";
         _btnResetPassword.Size = new Size(28, 28);
         _btnResetPassword.Style.Image = Properties.Resources.password_reset;
@@ -146,7 +146,7 @@ partial class MemberManagementForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(804, 511);
+        ClientSize = new Size(784, 461);
         Controls.Add(_btnResetPassword);
         Controls.Add(_btnDelete);
         Controls.Add(_btnAdd);

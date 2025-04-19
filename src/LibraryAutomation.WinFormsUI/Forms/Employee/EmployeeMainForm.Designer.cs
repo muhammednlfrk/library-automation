@@ -90,6 +90,7 @@ partial class EmployeeMainForm
         _btnShelfs.Text = "Raflar";
         _btnShelfs.TextImageRelation = TextImageRelation.ImageAboveText;
         _btnShelfs.TextMargin = new Padding(1);
+        _btnShelfs.Click += _btnShelfs_Click;
         // 
         // _btnPublishers
         // 

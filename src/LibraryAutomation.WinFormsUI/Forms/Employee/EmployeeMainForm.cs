@@ -59,4 +59,9 @@ public partial class EmployeeMainForm : SfForm
     {
         new PublishersForm().ShowDialog();
     }
+
+    private void _btnShelfs_Click(object sender, EventArgs e)
+    {
+        new ShelfsForm().ShowDialog();
+    }
 }

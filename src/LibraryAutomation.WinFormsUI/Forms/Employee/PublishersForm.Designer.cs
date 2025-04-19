@@ -49,7 +49,7 @@ partial class PublishersForm
         _dataGridPublishers.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
         _dataGridPublishers.Location = new Point(5, 50);
         _dataGridPublishers.Name = "_dataGridPublishers";
-        _dataGridPublishers.Size = new Size(419, 251);
+        _dataGridPublishers.Size = new Size(574, 306);
         _dataGridPublishers.Style.BorderColor = Color.FromArgb(100, 100, 100);
         _dataGridPublishers.Style.CheckBoxStyle.CheckedBackColor = Color.FromArgb(0, 120, 215);
         _dataGridPublishers.Style.CheckBoxStyle.CheckedBorderColor = Color.FromArgb(0, 120, 215);
@@ -73,10 +73,10 @@ partial class PublishersForm
         // _txtBoxSearch
         // 
         _txtBoxSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-        _txtBoxSearch.BeforeTouchSize = new Size(317, 23);
+        _txtBoxSearch.BeforeTouchSize = new Size(472, 23);
         _txtBoxSearch.Location = new Point(5, 21);
         _txtBoxSearch.Name = "_txtBoxSearch";
-        _txtBoxSearch.Size = new Size(317, 23);
+        _txtBoxSearch.Size = new Size(472, 23);
         _txtBoxSearch.TabIndex = 17;
         _txtBoxSearch.TextChanged += _txtBoxSearch_TextChanged;
         // 
@@ -86,7 +86,7 @@ partial class PublishersForm
         _btnDelete.Enabled = false;
         _btnDelete.Font = new Font("Segoe UI Semibold", 9F);
         _btnDelete.ImageSize = new Size(16, 16);
-        _btnDelete.Location = new Point(362, 16);
+        _btnDelete.Location = new Point(517, 16);
         _btnDelete.Name = "_btnDelete";
         _btnDelete.Size = new Size(28, 28);
         _btnDelete.Style.Image = Properties.Resources.unavailable;
@@ -97,7 +97,7 @@ partial class PublishersForm
         _btnAdd.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         _btnAdd.Font = new Font("Segoe UI Semibold", 9F);
         _btnAdd.ImageSize = new Size(16, 16);
-        _btnAdd.Location = new Point(396, 16);
+        _btnAdd.Location = new Point(551, 16);
         _btnAdd.Name = "_btnAdd";
         _btnAdd.Size = new Size(28, 28);
         _btnAdd.Style.Image = Properties.Resources.add;
@@ -110,7 +110,7 @@ partial class PublishersForm
         _btnUpdate.Enabled = false;
         _btnUpdate.Font = new Font("Segoe UI Semibold", 9F);
         _btnUpdate.ImageSize = new Size(16, 16);
-        _btnUpdate.Location = new Point(328, 16);
+        _btnUpdate.Location = new Point(483, 16);
         _btnUpdate.Name = "_btnUpdate";
         _btnUpdate.Size = new Size(28, 28);
         _btnUpdate.Style.Image = Properties.Resources.edit;
@@ -120,7 +120,7 @@ partial class PublishersForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(429, 306);
+        ClientSize = new Size(584, 361);
         Controls.Add(_btnUpdate);
         Controls.Add(_btnDelete);
         Controls.Add(_btnAdd);
