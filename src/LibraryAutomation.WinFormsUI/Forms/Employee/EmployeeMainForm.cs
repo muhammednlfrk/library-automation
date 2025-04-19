@@ -1,4 +1,5 @@
-﻿using LibraryAutomation.WinFormsUI.Theme;
+﻿using LibraryAutomation.WinFormsUI.Forms.Employee.Member;
+using LibraryAutomation.WinFormsUI.Theme;
 using Syncfusion.Windows.Forms;
 using Syncfusion.WinForms.Controls;
 
@@ -42,5 +43,10 @@ public partial class EmployeeMainForm : SfForm
             _isExitConfirmed = true;
             Application.Exit();
         }
+    }
+
+    private void _btnUsers_Click(object sender, EventArgs e)
+    {
+        new MemberManagementForm().ShowDialog();
     }
 }

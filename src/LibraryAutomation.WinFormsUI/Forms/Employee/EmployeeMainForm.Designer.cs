@@ -139,6 +139,7 @@ partial class EmployeeMainForm
         _btnUsers.Text = "Üyeler";
         _btnUsers.TextImageRelation = TextImageRelation.ImageAboveText;
         _btnUsers.TextMargin = new Padding(1);
+        _btnUsers.Click += _btnUsers_Click;
         // 
         // _pnlMenu
         // 

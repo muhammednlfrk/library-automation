@@ -63,6 +63,16 @@ namespace LibraryAutomation.WinFormsUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add {
+            get {
+                object obj = ResourceManager.GetObject("add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AppIcon128 {
             get {
                 object obj = ResourceManager.GetObject("AppIcon128", resourceCulture);
@@ -153,9 +163,29 @@ namespace LibraryAutomation.WinFormsUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap password_reset {
+            get {
+                object obj = ResourceManager.GetObject("password-reset", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap return_book {
             get {
                 object obj = ResourceManager.GetObject("return-book", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unavailable {
+            get {
+                object obj = ResourceManager.GetObject("unavailable", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
