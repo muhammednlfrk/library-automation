@@ -74,4 +74,9 @@ public partial class EmployeeMainForm : SfForm
     {
         new TranslatorsOrWritersForm(false).ShowDialog();
     }
+
+    private void _btnBooks_Click(object sender, EventArgs e)
+    {
+        new BooksForm().ShowDialog();
+    }
 }

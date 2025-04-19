@@ -56,6 +56,7 @@ partial class EmployeeMainForm
         _btnBooks.Text = "Kitaplar";
         _btnBooks.TextImageRelation = TextImageRelation.ImageAboveText;
         _btnBooks.TextMargin = new Padding(1);
+        _btnBooks.Click += _btnBooks_Click;
         // 
         // _btnWriters
         // 
