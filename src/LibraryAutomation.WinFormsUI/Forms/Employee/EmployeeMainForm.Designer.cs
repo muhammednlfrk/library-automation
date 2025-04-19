@@ -106,6 +106,7 @@ partial class EmployeeMainForm
         _btnPublishers.Text = "Yayın Evleri";
         _btnPublishers.TextImageRelation = TextImageRelation.ImageAboveText;
         _btnPublishers.TextMargin = new Padding(1);
+        _btnPublishers.Click += _btnPublishers_Click;
         // 
         // _btnBorrows
         // 

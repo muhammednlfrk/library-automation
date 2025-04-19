@@ -54,4 +54,9 @@ public partial class EmployeeMainForm : SfForm
     {
         new BorrowsForm().ShowDialog();
     }
+
+    private void _btnPublishers_Click(object sender, EventArgs e)
+    {
+        new PublishersForm().ShowDialog();
+    }
 }
