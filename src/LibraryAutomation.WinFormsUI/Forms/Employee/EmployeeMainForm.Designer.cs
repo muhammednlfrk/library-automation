@@ -65,6 +65,7 @@ partial class EmployeeMainForm
         _btnWriters.Size = new Size(120, 28);
         _btnWriters.TabIndex = 1;
         _btnWriters.Text = "Yazarlar";
+        _btnWriters.Click += _btnWriters_Click;
         // 
         // _btnTranslators
         // 
@@ -74,6 +75,7 @@ partial class EmployeeMainForm
         _btnTranslators.Size = new Size(120, 28);
         _btnTranslators.TabIndex = 2;
         _btnTranslators.Text = "Çevirmenler";
+        _btnTranslators.Click += _btnTranslators_Click;
         // 
         // _btnShelfs
         // 

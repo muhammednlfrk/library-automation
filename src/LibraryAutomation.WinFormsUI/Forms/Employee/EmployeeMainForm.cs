@@ -64,4 +64,14 @@ public partial class EmployeeMainForm : SfForm
     {
         new ShelfsForm().ShowDialog();
     }
+
+    private void _btnTranslators_Click(object sender, EventArgs e)
+    {
+        new TranslatorsOrWritersForm(true).ShowDialog();
+    }
+
+    private void _btnWriters_Click(object sender, EventArgs e)
+    {
+        new TranslatorsOrWritersForm(false).ShowDialog();
+    }
 }
