@@ -49,4 +49,9 @@ public partial class EmployeeMainForm : SfForm
     {
         new MemberManagementForm().ShowDialog();
     }
+
+    private void _btnBorrows_Click(object sender, EventArgs e)
+    {
+        new BorrowsForm().ShowDialog();
+    }
 }

@@ -122,6 +122,7 @@ partial class EmployeeMainForm
         _btnBorrows.Text = "Ödünç Almalar";
         _btnBorrows.TextImageRelation = TextImageRelation.ImageAboveText;
         _btnBorrows.TextMargin = new Padding(1);
+        _btnBorrows.Click += _btnBorrows_Click;
         // 
         // _btnUsers
         // 

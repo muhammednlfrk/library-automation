@@ -41,6 +41,7 @@ public partial class ReturnBookForm : SfForm
         _dataGridBorrows.Columns["IsDelivered"].Visible = false;
         _dataGridBorrows.Columns["MemberNumber"].Visible = false;
         _dataGridBorrows.Columns["BorrowDate"].HeaderText = "Tarih";
+        _dataGridBorrows.Columns["DeliveryDate"].Visible = false;
         _dataGridBorrows.Columns["BookName"].HeaderText = "Kitap Adı";
         _dataGridBorrows.Columns["BookWriter"].HeaderText = "Yazarı";
         _dataGridBorrows.Columns["BookISBN"].HeaderText = "ISBN";
