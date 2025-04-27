@@ -19,6 +19,8 @@ namespace LibraryAutomation.WinFormsUI;
 
 internal static class Program
 {
+    public static User AuthenticatedUser { get; set; } = null!;
+
     public static IServiceProvider ServiceProvider { get; private set; } = null!;
 
     /// <summary>
@@ -48,6 +50,8 @@ internal static class Program
         memoryCache.GetLanguages();
 
         // Run the application.
+        IPasswordHashGenerator passwordHashGenerator = ServiceProvider.Get<IPasswordHashGenerator>();
+        string password = passwordHashGenerator.HashPassword("123456");
         SelectLoginTypeForm initialForm = ServiceProvider.Get<SelectLoginTypeForm>();
         Application.Run(initialForm);
     }
