@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryAutomation.Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryAutomation.Domain", "src\LibraryAutomation.Domain\LibraryAutomation.Domain.csproj", "{88AD7DF8-0558-4364-9CAF-16E4B23CAE2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryAutomation.Application", "src\LibraryAutomation.Application\LibraryAutomation.Application.csproj", "{705002DC-531E-457B-8460-2EB3BDBE51C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryAutomation.ApplicationL", "src\LibraryAutomation.Application\LibraryAutomation.ApplicationL.csproj", "{705002DC-531E-457B-8460-2EB3BDBE51C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

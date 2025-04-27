@@ -1,6 +1,6 @@
 ﻿using LibraryAutomation.Domain.Entities;
 
-namespace LibraryAutomation.Application.Identity;
+namespace LibraryAutomation.ApplicationL.Identity;
 
 public interface IAuthenticator
 {

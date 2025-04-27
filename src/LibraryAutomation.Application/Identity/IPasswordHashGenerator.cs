@@ -1,4 +1,4 @@
-﻿namespace LibraryAutomation.Application.Identity;
+﻿namespace LibraryAutomation.ApplicationL.Identity;
 
 public interface IPasswordHashGenerator
 {

@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using LibraryAutomation.Domain.Entities;
 
-namespace LibraryAutomation.Application.Validation;
+namespace LibraryAutomation.ApplicationL.Validation;
 public class PublisherValidator : AbstractValidator<Publisher>
 {
     public PublisherValidator()

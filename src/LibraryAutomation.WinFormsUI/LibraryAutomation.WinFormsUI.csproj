@@ -20,6 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LibraryAutomation.Infrastructure\LibraryAutomation.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="LibraryTheme">
       <HintPath>..\..\..\LibraryTheme.dll</HintPath>
     </Reference>

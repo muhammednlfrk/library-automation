@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace LibraryAutomation.Application.Identity;
+namespace LibraryAutomation.ApplicationL.Identity;
 
 public class MD5PasswordHashGenerator : IPasswordHashGenerator
 {

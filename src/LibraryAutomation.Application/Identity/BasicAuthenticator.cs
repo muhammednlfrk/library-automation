@@ -1,7 +1,7 @@
 ﻿using LibraryAutomation.Domain.Entities;
 using LibraryAutomation.Infrastructure.Repositories;
 
-namespace LibraryAutomation.Application.Identity;
+namespace LibraryAutomation.ApplicationL.Identity;
 
 public class BasicAuthenticator(IRepository<User> userRepository, IPasswordHashGenerator passwordHashGenerator) : IAuthenticator
 {
