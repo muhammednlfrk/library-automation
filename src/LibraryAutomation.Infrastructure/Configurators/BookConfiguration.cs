@@ -57,7 +57,7 @@ internal sealed class BookConfiguration : IEntityTypeConfiguration<Book>
             .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasOne(b => b.OriginalLanguage)
-            .WithMany(ol => ol.Books)
+            .WithMany(ol => ol.BooksWithOriginalLanguage)
             .HasForeignKey(b => b.OriginalLanguageId)
             .OnDelete(DeleteBehavior.Cascade);
 

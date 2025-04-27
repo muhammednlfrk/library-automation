@@ -7,4 +7,6 @@ public sealed class Language : EntityBase
     public required string NameTR { get; set; }
 
     public ICollection<Book>? Books { get; set; }
+
+    public ICollection<Book>? BooksWithOriginalLanguage { get; set; }
 }
