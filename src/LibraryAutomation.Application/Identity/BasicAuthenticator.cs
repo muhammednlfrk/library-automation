@@ -10,9 +10,6 @@ public class BasicAuthenticator(IRepository<User> userRepository, IPasswordHashG
 
     public User? Authenticate(string usernameOrEmail, string password)
     {
-        string passwd = _passwordHashGenerator.HashPassword("123");
-        bool res = _passwordHashGenerator.VerifyPassword("123456", "bthZjksmU5N1lSuIFm/0dg==:EAD0UqSdjo2QSnru9rNsgNuDKhcuM0XDRlk64a+qfE0=");
-
         User? user = _userRepository.DbSet.FirstOrDefault(u =>
             u.Username == usernameOrEmail ||
             u.Email == usernameOrEmail);
