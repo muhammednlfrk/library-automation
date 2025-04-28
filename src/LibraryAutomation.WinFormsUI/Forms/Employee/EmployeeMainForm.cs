@@ -1,4 +1,5 @@
-﻿using LibraryAutomation.WinFormsUI.Forms.Employee.Member;
+﻿using LibraryAutomation.WinFormsUI.Extensions;
+using LibraryAutomation.WinFormsUI.Forms.Employee.Member;
 using LibraryAutomation.WinFormsUI.Theme;
 using Syncfusion.Windows.Forms;
 using Syncfusion.WinForms.Controls;
@@ -25,6 +26,8 @@ public partial class EmployeeMainForm : SfForm
         _btnUsers.MakeIcon();
     }
 
+    #region Events
+
     private void EmployeeMainForm_FormClosing(object sender, FormClosingEventArgs e)
     {
         if (_isExitConfirmed) return;
@@ -45,38 +48,19 @@ public partial class EmployeeMainForm : SfForm
         }
     }
 
-    private void _btnUsers_Click(object sender, EventArgs e)
-    {
-        new MemberManagementForm().ShowDialog();
-    }
+    private void _btnUsers_Click(object sender, EventArgs e) => Program.ServiceProvider.Get<MemberManagementForm>().ShowDialog();
 
-    private void _btnBorrows_Click(object sender, EventArgs e)
-    {
-        new BorrowsForm().ShowDialog();
-    }
+    private void _btnBorrows_Click(object sender, EventArgs e) => Program.ServiceProvider.Get<BorrowsForm>().ShowDialog();
 
-    private void _btnPublishers_Click(object sender, EventArgs e)
-    {
-        new PublishersForm().ShowDialog();
-    }
+    private void _btnPublishers_Click(object sender, EventArgs e) => Program.ServiceProvider.Get<PublishersForm>().ShowDialog();
 
-    private void _btnShelfs_Click(object sender, EventArgs e)
-    {
-        new ShelfsForm().ShowDialog();
-    }
+    private void _btnShelfs_Click(object sender, EventArgs e) => Program.ServiceProvider.Get<ShelfsForm>().ShowDialog();
 
-    private void _btnTranslators_Click(object sender, EventArgs e)
-    {
-        new TranslatorsOrWritersForm(true).ShowDialog();
-    }
+    private void _btnTranslators_Click(object sender, EventArgs e) => new TranslatorsOrWritersForm(true).ShowDialog();
 
-    private void _btnWriters_Click(object sender, EventArgs e)
-    {
-        new TranslatorsOrWritersForm(false).ShowDialog();
-    }
+    private void _btnWriters_Click(object sender, EventArgs e) => new TranslatorsOrWritersForm(false).ShowDialog();
 
-    private void _btnBooks_Click(object sender, EventArgs e)
-    {
-        new BooksForm().ShowDialog();
-    }
+    private void _btnBooks_Click(object sender, EventArgs e) => Program.ServiceProvider.Get<BooksForm>().ShowDialog();
+
+    #endregion
 }
