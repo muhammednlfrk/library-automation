@@ -58,6 +58,7 @@ partial class AddOrUpdateShelfForm
         _btnSave.Size = new Size(96, 28);
         _btnSave.TabIndex = 11;
         _btnSave.Text = "&Kaydet";
+        _btnSave.Click += _btnSave_Click;
         // 
         // _lblName
         // 
@@ -102,7 +103,6 @@ partial class AddOrUpdateShelfForm
         // 
         // AddOrUpdateShelfForm
         // 
-        AcceptButton = _btnSave;
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         CancelButton = _btnCancel;
@@ -120,6 +120,7 @@ partial class AddOrUpdateShelfForm
         StartPosition = FormStartPosition.CenterScreen;
         Style.MdiChild.IconHorizontalAlignment = HorizontalAlignment.Center;
         Style.MdiChild.IconVerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;
+        Load += AddOrUpdateShelfForm_Load;
         ((System.ComponentModel.ISupportInitialize)_txtBoxName).EndInit();
         ((System.ComponentModel.ISupportInitialize)_txtBoxDescription).EndInit();
         ResumeLayout(false);

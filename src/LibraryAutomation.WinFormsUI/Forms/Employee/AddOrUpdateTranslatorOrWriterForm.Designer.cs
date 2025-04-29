@@ -62,6 +62,7 @@ partial class AddOrUpdateTranslatorOrWriterForm
         _btnSave.Size = new Size(96, 28);
         _btnSave.TabIndex = 17;
         _btnSave.Text = "&Kaydet";
+        _btnSave.Click += _btnSave_Click;
         // 
         // _lblName
         // 
@@ -117,6 +118,7 @@ partial class AddOrUpdateTranslatorOrWriterForm
         // _dtEditBirthDate
         // 
         _dtEditBirthDate.AllowNull = true;
+        _dtEditBirthDate.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
         _dtEditBirthDate.DateTimeIcon = null;
         _dtEditBirthDate.Location = new Point(5, 112);
         _dtEditBirthDate.Name = "_dtEditBirthDate";
@@ -140,6 +142,7 @@ partial class AddOrUpdateTranslatorOrWriterForm
         // _dtEditDeathDate
         // 
         _dtEditDeathDate.AllowNull = true;
+        _dtEditDeathDate.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
         _dtEditDeathDate.DateTimeIcon = null;
         _dtEditDeathDate.Location = new Point(5, 157);
         _dtEditDeathDate.Name = "_dtEditDeathDate";
@@ -175,6 +178,7 @@ partial class AddOrUpdateTranslatorOrWriterForm
         StartPosition = FormStartPosition.CenterScreen;
         Style.MdiChild.IconHorizontalAlignment = HorizontalAlignment.Center;
         Style.MdiChild.IconVerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;
+        Load += AddOrUpdateTranslatorOrWriterForm_Load;
         ((System.ComponentModel.ISupportInitialize)_txtBoxName).EndInit();
         ((System.ComponentModel.ISupportInitialize)_txtBoxSurname).EndInit();
         ResumeLayout(false);

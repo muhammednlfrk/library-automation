@@ -56,9 +56,19 @@ public partial class EmployeeMainForm : SfForm
 
     private void _btnShelfs_Click(object sender, EventArgs e) => Program.ServiceProvider.Get<ShelfsForm>().ShowDialog();
 
-    private void _btnTranslators_Click(object sender, EventArgs e) => new TranslatorsOrWritersForm(true).ShowDialog();
+    private void _btnTranslators_Click(object sender, EventArgs e)
+    {
+        TranslatorsOrWritersForm translatorsForm = Program.ServiceProvider.Get<TranslatorsOrWritersForm>();
+        translatorsForm.IsTranslator = true;
+        translatorsForm.ShowDialog();
+    }
 
-    private void _btnWriters_Click(object sender, EventArgs e) => new TranslatorsOrWritersForm(false).ShowDialog();
+    private void _btnWriters_Click(object sender, EventArgs e)
+    {
+        TranslatorsOrWritersForm translatorsForm = Program.ServiceProvider.Get<TranslatorsOrWritersForm>();
+        translatorsForm.IsTranslator = false;
+        translatorsForm.ShowDialog();
+    }
 
     private void _btnBooks_Click(object sender, EventArgs e) => Program.ServiceProvider.Get<BooksForm>().ShowDialog();
 

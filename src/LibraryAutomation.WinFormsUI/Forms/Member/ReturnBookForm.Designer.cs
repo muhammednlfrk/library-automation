@@ -115,6 +115,7 @@ partial class ReturnBookForm
         _dataGridBorrows.Style.HyperlinkStyle.DefaultLinkColor = Color.FromArgb(0, 120, 215);
         _dataGridBorrows.TabIndex = 6;
         _dataGridBorrows.Text = "sfDataGrid1";
+        _dataGridBorrows.SelectionChanged += _dataGridBorrows_SelectionChanged;
         // 
         // _btnReturn
         // 
@@ -126,6 +127,7 @@ partial class ReturnBookForm
         _btnReturn.Size = new Size(132, 28);
         _btnReturn.TabIndex = 7;
         _btnReturn.Text = "İade Et";
+        _btnReturn.Click += _btnReturn_Click;
         // 
         // _btnCancel
         // 

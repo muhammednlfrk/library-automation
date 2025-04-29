@@ -164,6 +164,7 @@ partial class AddOrUpdateMemberForm
         _btnSave.Size = new Size(96, 28);
         _btnSave.TabIndex = 5;
         _btnSave.Text = "&Kaydet";
+        _btnSave.Click += _btnSave_Click;
         // 
         // _btnCancel
         // 
@@ -177,7 +178,6 @@ partial class AddOrUpdateMemberForm
         // 
         // AddOrUpdateMemberForm
         // 
-        AcceptButton = _btnSave;
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         CancelButton = _btnCancel;
@@ -203,6 +203,7 @@ partial class AddOrUpdateMemberForm
         StartPosition = FormStartPosition.CenterScreen;
         Style.MdiChild.IconHorizontalAlignment = HorizontalAlignment.Center;
         Style.MdiChild.IconVerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;
+        Load += AddOrUpdateMemberForm_Load;
         ((System.ComponentModel.ISupportInitialize)_txtBoxFullName).EndInit();
         ((System.ComponentModel.ISupportInitialize)_txtBoxEmail).EndInit();
         ((System.ComponentModel.ISupportInitialize)_txtBoxUsername).EndInit();

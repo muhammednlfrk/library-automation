@@ -30,16 +30,16 @@ partial class AddOrUpdatePublisherForm
     {
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddOrUpdatePublisherForm));
         _lblName = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-        _txtBoxFullName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+        _txtBoxName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
         _btnCancel = new Syncfusion.WinForms.Controls.SfButton();
         _btnSave = new Syncfusion.WinForms.Controls.SfButton();
-        ((System.ComponentModel.ISupportInitialize)_txtBoxFullName).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)_txtBoxName).BeginInit();
         SuspendLayout();
         // 
         // _lblName
         // 
         _lblName.DY = -19;
-        _lblName.LabeledControl = _txtBoxFullName;
+        _lblName.LabeledControl = _txtBoxName;
         _lblName.Location = new Point(5, 2);
         _lblName.Name = "_lblName";
         _lblName.Position = Syncfusion.Windows.Forms.Tools.AutoLabelPosition.Top;
@@ -47,14 +47,14 @@ partial class AddOrUpdatePublisherForm
         _lblName.TabIndex = 2;
         _lblName.Text = "Yayınevi Adı:";
         // 
-        // _txtBoxFullName
+        // _txtBoxName
         // 
-        _txtBoxFullName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-        _txtBoxFullName.BeforeTouchSize = new Size(274, 23);
-        _txtBoxFullName.Location = new Point(5, 21);
-        _txtBoxFullName.Name = "_txtBoxFullName";
-        _txtBoxFullName.Size = new Size(274, 23);
-        _txtBoxFullName.TabIndex = 3;
+        _txtBoxName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+        _txtBoxName.BeforeTouchSize = new Size(274, 23);
+        _txtBoxName.Location = new Point(5, 21);
+        _txtBoxName.Name = "_txtBoxName";
+        _txtBoxName.Size = new Size(274, 23);
+        _txtBoxName.TabIndex = 3;
         // 
         // _btnCancel
         // 
@@ -75,10 +75,10 @@ partial class AddOrUpdatePublisherForm
         _btnSave.Size = new Size(96, 28);
         _btnSave.TabIndex = 7;
         _btnSave.Text = "&Kaydet";
+        _btnSave.Click += _btnSave_Click;
         // 
         // AddOrUpdatePublisherForm
         // 
-        AcceptButton = _btnSave;
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         CancelButton = _btnCancel;
@@ -86,7 +86,7 @@ partial class AddOrUpdatePublisherForm
         Controls.Add(_btnCancel);
         Controls.Add(_btnSave);
         Controls.Add(_lblName);
-        Controls.Add(_txtBoxFullName);
+        Controls.Add(_txtBoxName);
         Icon = (Icon)resources.GetObject("$this.Icon");
         MaximizeBox = false;
         MaximumSize = new Size(300, 125);
@@ -96,7 +96,8 @@ partial class AddOrUpdatePublisherForm
         StartPosition = FormStartPosition.CenterScreen;
         Style.MdiChild.IconHorizontalAlignment = HorizontalAlignment.Center;
         Style.MdiChild.IconVerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;
-        ((System.ComponentModel.ISupportInitialize)_txtBoxFullName).EndInit();
+        Load += AddOrUpdatePublisherForm_Load;
+        ((System.ComponentModel.ISupportInitialize)_txtBoxName).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -104,7 +105,7 @@ partial class AddOrUpdatePublisherForm
     #endregion
 
     private Syncfusion.Windows.Forms.Tools.AutoLabel _lblName;
-    private Syncfusion.Windows.Forms.Tools.TextBoxExt _txtBoxFullName;
+    private Syncfusion.Windows.Forms.Tools.TextBoxExt _txtBoxName;
     private Syncfusion.WinForms.Controls.SfButton _btnCancel;
     private Syncfusion.WinForms.Controls.SfButton _btnSave;
 }

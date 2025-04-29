@@ -47,7 +47,11 @@ internal static class Program
 
         // Load cache.
         IMemoryCache memoryCache = ServiceProvider.Get<IMemoryCache>();
-        memoryCache.GetLanguages();
+        memoryCache.GetLanguages(true);
+        memoryCache.GetPublishers(true);
+        memoryCache.GetWriters(true);
+        memoryCache.GetTranslators(true);
+        memoryCache.GetShelfs(true);
 
         // Run the application.
         IPasswordHashGenerator passwordHashGenerator = ServiceProvider.Get<IPasswordHashGenerator>();
@@ -70,6 +74,7 @@ internal static class Program
         // Add forms.
         services.AddTransient<SelectLoginTypeForm>();
         services.AddTransient<BorrowBookForm>();
+        services.AddTransient<MemberMainForm>();
         services.AddTransient<ReturnBookForm>();
         services.AddTransient<AddOrUpdateBookForm>();
         services.AddTransient<AddOrUpdateMemberForm>();

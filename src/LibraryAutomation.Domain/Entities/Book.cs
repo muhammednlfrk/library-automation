@@ -2,15 +2,15 @@
 
 public sealed class Book : EntityBase
 {
-    public required string Name { get; set; }
+    public string? Name { get; set; }
 
-    public required string OriginName { get; set; }
+    public string? OriginName { get; set; }
 
-    public required DateTime PublishDate { get; set; }
+    public DateTime? PublishDate { get; set; }
 
     public int PageCount { get; set; }
 
-    public required string ISBN { get; set; }
+    public string? ISBN { get; set; }
 
     public int StockQuantity { get; set; }
 
@@ -34,11 +34,15 @@ public sealed class Book : EntityBase
 
     public ICollection<Writer>? Writers { get; set; }
 
+    public ICollection<BooksWriter>? BooksWriters { get; set; }
+
     public ICollection<Translator>? Translators { get; set; }
+
+    public ICollection<BooksTranslator>? BooksTranslators { get; set; }
 
     public ICollection<Category>? Categories { get; set; }
 
-    public ICollection<Borrow>? Borrows { get; set; }
-
     public ICollection<BooksCategories>? BooksCategories { get; set; }
+
+    public ICollection<Borrow>? Borrows { get; set; }
 }

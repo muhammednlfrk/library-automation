@@ -1,4 +1,5 @@
-﻿using LibraryAutomation.WinFormsUI.Theme;
+﻿using LibraryAutomation.WinFormsUI.Extensions;
+using LibraryAutomation.WinFormsUI.Theme;
 using Syncfusion.Windows.Forms;
 using Syncfusion.WinForms.Controls;
 
@@ -43,11 +44,11 @@ public partial class MemberMainForm : SfForm
 
     private void _btnBorrowBooks_Click(object sender, EventArgs e)
     {
-        new BorrowBookForm().ShowDialog();
+        Program.ServiceProvider.Get<BorrowBookForm>().ShowDialog();
     }
 
     private void _btnReturnBook_Click(object sender, EventArgs e)
     {
-        new ReturnBookForm().ShowDialog();
+        Program.ServiceProvider.Get<ReturnBookForm>().ShowDialog();
     }
 }

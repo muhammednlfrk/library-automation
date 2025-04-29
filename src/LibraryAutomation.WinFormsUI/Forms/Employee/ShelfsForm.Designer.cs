@@ -50,6 +50,7 @@ partial class ShelfsForm
         _btnUpdate.Size = new Size(28, 28);
         _btnUpdate.Style.Image = Properties.Resources.edit;
         _btnUpdate.TabIndex = 37;
+        _btnUpdate.Click += _btnUpdate_Click;
         // 
         // _btnDelete
         // 
@@ -62,6 +63,7 @@ partial class ShelfsForm
         _btnDelete.Size = new Size(28, 28);
         _btnDelete.Style.Image = Properties.Resources.unavailable;
         _btnDelete.TabIndex = 36;
+        _btnDelete.Click += _btnDelete_Click;
         // 
         // _btnAdd
         // 

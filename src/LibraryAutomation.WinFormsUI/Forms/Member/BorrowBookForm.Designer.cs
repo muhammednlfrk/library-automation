@@ -29,10 +29,10 @@ partial class BorrowBookForm
     private void InitializeComponent()
     {
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BorrowBookForm));
-        _dataGridBook = new Syncfusion.WinForms.DataGrid.SfDataGrid();
+        _dataGridBooks = new Syncfusion.WinForms.DataGrid.SfDataGrid();
         _txtBoxISBN = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
         _lblISBN = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-        pictureBox1 = new PictureBox();
+        _pcBoxImage = new PictureBox();
         _txtBoxName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
         _lblName = new Syncfusion.Windows.Forms.Tools.AutoLabel();
         _txtBoxWriter = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
@@ -52,9 +52,9 @@ partial class BorrowBookForm
         _lblSearch = new Syncfusion.Windows.Forms.Tools.AutoLabel();
         _lblNumber = new Syncfusion.Windows.Forms.Tools.AutoLabel();
         _txtBoxNumber = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-        ((System.ComponentModel.ISupportInitialize)_dataGridBook).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)_dataGridBooks).BeginInit();
         ((System.ComponentModel.ISupportInitialize)_txtBoxISBN).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)_pcBoxImage).BeginInit();
         ((System.ComponentModel.ISupportInitialize)_txtBoxName).BeginInit();
         ((System.ComponentModel.ISupportInitialize)_txtBoxWriter).BeginInit();
         ((System.ComponentModel.ISupportInitialize)_txtBoxOriginalName).BeginInit();
@@ -66,25 +66,25 @@ partial class BorrowBookForm
         ((System.ComponentModel.ISupportInitialize)_txtBoxNumber).BeginInit();
         SuspendLayout();
         // 
-        // _dataGridBook
+        // _dataGridBooks
         // 
-        _dataGridBook.AccessibleName = "Table";
-        _dataGridBook.AllowEditing = false;
-        _dataGridBook.AllowFiltering = true;
-        _dataGridBook.AllowResizingColumns = true;
-        _dataGridBook.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-        _dataGridBook.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-        _dataGridBook.Location = new Point(5, 56);
-        _dataGridBook.Name = "_dataGridBook";
-        _dataGridBook.Size = new Size(650, 537);
-        _dataGridBook.Style.BorderColor = Color.FromArgb(100, 100, 100);
-        _dataGridBook.Style.CheckBoxStyle.CheckedBackColor = Color.FromArgb(0, 120, 215);
-        _dataGridBook.Style.CheckBoxStyle.CheckedBorderColor = Color.FromArgb(0, 120, 215);
-        _dataGridBook.Style.CheckBoxStyle.IndeterminateBorderColor = Color.FromArgb(0, 120, 215);
-        _dataGridBook.Style.HyperlinkStyle.DefaultLinkColor = Color.FromArgb(0, 120, 215);
-        _dataGridBook.TabIndex = 0;
-        _dataGridBook.Text = "sfDataGrid1";
-        _dataGridBook.SelectionChanged += _dataGridBook_SelectionChanged;
+        _dataGridBooks.AccessibleName = "Table";
+        _dataGridBooks.AllowEditing = false;
+        _dataGridBooks.AllowFiltering = true;
+        _dataGridBooks.AllowResizingColumns = true;
+        _dataGridBooks.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+        _dataGridBooks.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
+        _dataGridBooks.Location = new Point(5, 56);
+        _dataGridBooks.Name = "_dataGridBooks";
+        _dataGridBooks.Size = new Size(650, 537);
+        _dataGridBooks.Style.BorderColor = Color.FromArgb(100, 100, 100);
+        _dataGridBooks.Style.CheckBoxStyle.CheckedBackColor = Color.FromArgb(0, 120, 215);
+        _dataGridBooks.Style.CheckBoxStyle.CheckedBorderColor = Color.FromArgb(0, 120, 215);
+        _dataGridBooks.Style.CheckBoxStyle.IndeterminateBorderColor = Color.FromArgb(0, 120, 215);
+        _dataGridBooks.Style.HyperlinkStyle.DefaultLinkColor = Color.FromArgb(0, 120, 215);
+        _dataGridBooks.TabIndex = 0;
+        _dataGridBooks.Text = "sfDataGrid1";
+        _dataGridBooks.SelectionChanged += _dataGridBook_SelectionChanged;
         // 
         // _txtBoxISBN
         // 
@@ -108,17 +108,17 @@ partial class BorrowBookForm
         _lblISBN.TabIndex = 2;
         _lblISBN.Text = "ISBN:";
         // 
-        // pictureBox1
+        // _pcBoxImage
         // 
-        pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-        pictureBox1.Image = Properties.Resources.dune;
-        pictureBox1.Location = new Point(71, 3);
-        pictureBox1.Name = "pictureBox1";
-        pictureBox1.Size = new Size(128, 200);
-        pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-        pictureBox1.TabIndex = 3;
-        pictureBox1.TabStop = false;
+        _pcBoxImage.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        _pcBoxImage.BorderStyle = BorderStyle.FixedSingle;
+        _pcBoxImage.Image = Properties.Resources.dune;
+        _pcBoxImage.Location = new Point(71, 3);
+        _pcBoxImage.Name = "_pcBoxImage";
+        _pcBoxImage.Size = new Size(128, 200);
+        _pcBoxImage.SizeMode = PictureBoxSizeMode.Zoom;
+        _pcBoxImage.TabIndex = 3;
+        _pcBoxImage.TabStop = false;
         // 
         // _txtBoxName
         // 
@@ -256,6 +256,7 @@ partial class BorrowBookForm
         _btnBorrow.Size = new Size(264, 28);
         _btnBorrow.TabIndex = 1;
         _btnBorrow.Text = "Ödünç Al";
+        _btnBorrow.Click += _btnBorrow_Click;
         // 
         // _btnCancel
         // 
@@ -270,7 +271,7 @@ partial class BorrowBookForm
         // panel1
         // 
         panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-        panel1.Controls.Add(pictureBox1);
+        panel1.Controls.Add(_pcBoxImage);
         panel1.Controls.Add(_btnCancel);
         panel1.Controls.Add(_txtBoxISBN);
         panel1.Controls.Add(_btnBorrow);
@@ -338,7 +339,6 @@ partial class BorrowBookForm
         // 
         // BorrowBookForm
         // 
-        AcceptButton = _btnBorrow;
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         CancelButton = _btnCancel;
@@ -348,7 +348,7 @@ partial class BorrowBookForm
         Controls.Add(_txtBoxSearch);
         Controls.Add(_lblSearch);
         Controls.Add(panel1);
-        Controls.Add(_dataGridBook);
+        Controls.Add(_dataGridBooks);
         Icon = (Icon)resources.GetObject("$this.Icon");
         Name = "BorrowBookForm";
         StartPosition = FormStartPosition.CenterScreen;
@@ -357,9 +357,9 @@ partial class BorrowBookForm
         Text = "Ödünç Al";
         WindowState = FormWindowState.Maximized;
         Load += BorrowBookForm_Load;
-        ((System.ComponentModel.ISupportInitialize)_dataGridBook).EndInit();
+        ((System.ComponentModel.ISupportInitialize)_dataGridBooks).EndInit();
         ((System.ComponentModel.ISupportInitialize)_txtBoxISBN).EndInit();
-        ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+        ((System.ComponentModel.ISupportInitialize)_pcBoxImage).EndInit();
         ((System.ComponentModel.ISupportInitialize)_txtBoxName).EndInit();
         ((System.ComponentModel.ISupportInitialize)_txtBoxWriter).EndInit();
         ((System.ComponentModel.ISupportInitialize)_txtBoxOriginalName).EndInit();
@@ -376,10 +376,10 @@ partial class BorrowBookForm
 
     #endregion
 
-    private Syncfusion.WinForms.DataGrid.SfDataGrid _dataGridBook;
+    private Syncfusion.WinForms.DataGrid.SfDataGrid _dataGridBooks;
     private Syncfusion.Windows.Forms.Tools.TextBoxExt _txtBoxISBN;
     private Syncfusion.Windows.Forms.Tools.AutoLabel _lblISBN;
-    private PictureBox pictureBox1;
+    private PictureBox _pcBoxImage;
     private Syncfusion.Windows.Forms.Tools.TextBoxExt _txtBoxName;
     private Syncfusion.Windows.Forms.Tools.AutoLabel _lblName;
     private Syncfusion.Windows.Forms.Tools.TextBoxExt _txtBoxWriter;
