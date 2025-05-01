@@ -1,7 +1,6 @@
 ﻿using LibraryAutomation.Domain.Entities;
 using LibraryAutomation.Infrastructure.Repositories;
 using LibraryAutomation.WinFormsUI.Forms.Employee;
-using LibraryAutomation.WinFormsUI.Models;
 using LibraryAutomation.WinFormsUI.Theme;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
