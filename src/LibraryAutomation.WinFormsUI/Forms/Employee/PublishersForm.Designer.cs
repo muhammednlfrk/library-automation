@@ -91,6 +91,7 @@ partial class PublishersForm
         _btnDelete.Size = new Size(28, 28);
         _btnDelete.Style.Image = Properties.Resources.unavailable;
         _btnDelete.TabIndex = 30;
+        _btnDelete.Click += _btnDelete_Click;
         // 
         // _btnAdd
         // 
@@ -115,6 +116,7 @@ partial class PublishersForm
         _btnUpdate.Size = new Size(28, 28);
         _btnUpdate.Style.Image = Properties.Resources.edit;
         _btnUpdate.TabIndex = 31;
+        _btnUpdate.Click += _btnUpdate_Click;
         // 
         // PublishersForm
         // 

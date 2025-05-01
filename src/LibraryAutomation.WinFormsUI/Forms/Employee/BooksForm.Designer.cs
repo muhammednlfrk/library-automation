@@ -50,6 +50,7 @@ partial class BooksForm
         _btnUpdate.Size = new Size(28, 28);
         _btnUpdate.Style.Image = Properties.Resources.edit;
         _btnUpdate.TabIndex = 43;
+        _btnUpdate.Click += _btnUpdate_Click;
         // 
         // _btnDelete
         // 
@@ -62,6 +63,7 @@ partial class BooksForm
         _btnDelete.Size = new Size(28, 28);
         _btnDelete.Style.Image = Properties.Resources.unavailable;
         _btnDelete.TabIndex = 42;
+        _btnDelete.Click += _btnDelete_Click;
         // 
         // _btnAdd
         // 
@@ -133,6 +135,7 @@ partial class BooksForm
         Style.MdiChild.IconHorizontalAlignment = HorizontalAlignment.Center;
         Style.MdiChild.IconVerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;
         Text = "Kitaplar";
+        Load += BooksForm_Load;
         ((System.ComponentModel.ISupportInitialize)_dataGridBooks).EndInit();
         ((System.ComponentModel.ISupportInitialize)_txtBoxSearch).EndInit();
         ResumeLayout(false);

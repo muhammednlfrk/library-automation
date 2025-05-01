@@ -1,7 +1,7 @@
 ﻿using LibraryAutomation.Domain.Entities;
 using LibraryAutomation.Infrastructure.Repositories;
 
-namespace LibraryAutomation.Application.Identity;
+namespace LibraryAutomation.ApplicationL.Identity;
 
 public class BasicAuthenticator(IRepository<User> userRepository, IPasswordHashGenerator passwordHashGenerator) : IAuthenticator
 {
@@ -11,8 +11,8 @@ public class BasicAuthenticator(IRepository<User> userRepository, IPasswordHashG
     public User? Authenticate(string usernameOrEmail, string password)
     {
         User? user = _userRepository.DbSet.FirstOrDefault(u =>
-            u.Username.Equals(usernameOrEmail, StringComparison.OrdinalIgnoreCase) ||
-            u.Email.Equals(usernameOrEmail, StringComparison.OrdinalIgnoreCase));
+            u.Username == usernameOrEmail ||
+            u.Email == usernameOrEmail);
 
         if (user == null) return null;
 

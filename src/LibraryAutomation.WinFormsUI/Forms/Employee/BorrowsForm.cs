@@ -1,60 +1,75 @@
-﻿using LibraryAutomation.WinFormsUI.Models;
+﻿using LibraryAutomation.Domain.Entities;
+using LibraryAutomation.Infrastructure.Repositories;
 using LibraryAutomation.WinFormsUI.Theme;
-using Syncfusion.Data;
+using Microsoft.EntityFrameworkCore;
 using Syncfusion.WinForms.Controls;
 
 namespace LibraryAutomation.WinFormsUI.Forms.Employee;
 public partial class BorrowsForm : SfForm
 {
-    private IEnumerable<BorrowModel> _borrows;
+    private readonly IRepository<Borrow> _borrowRepository;
 
-    public BorrowsForm()
+    private IEnumerable<Borrow> _borrows = null!;
+
+    public BorrowsForm(IRepository<Borrow> borrowRepository)
     {
         InitializeComponent();
 
         SfSkinManager.SetVisualStyle(this, "LibraryTheme");
         LibraryThemeExtensions.ApplySkin(this);
 
-        _borrows = BorrowModel.GetDummyData();
-        _dataGridBorrows.DataSource = _borrows;
-        _dataGridBorrows.Columns["Id"].Visible = false;
-        _dataGridBorrows.Columns["BookId"].Visible = false;
-        _dataGridBorrows.Columns["IsDelivered"].HeaderText = "İade Durumu";
-        _dataGridBorrows.Columns["MemberNumber"].HeaderText = "Üye Numarası";
-        _dataGridBorrows.Columns["BorrowDate"].HeaderText = "Ödünç Tarihi";
-        _dataGridBorrows.Columns["DeliveryDate"].HeaderText = "İade Tarihi";
-        _dataGridBorrows.Columns["BookName"].HeaderText = "Kitap Adı";
-        _dataGridBorrows.Columns["BookWriter"].HeaderText = "Yazarı";
-        _dataGridBorrows.Columns["BookISBN"].HeaderText = "ISBN";
+        _borrowRepository = borrowRepository;
     }
 
     private void _txtBoxSearch_TextChanged(object sender, EventArgs e) => _dataGridBorrows.SearchController.Search(_txtBoxSearch.Text);
 
-    private void _txtBoxNumber_TextChanged(object sender, EventArgs e)
+    private void BorrowsForm_Load(object sender, EventArgs e)
     {
-        string memberNumber = _txtBoxNumber.Text;
+        _borrows = _borrowRepository.DbSet
+            .Include(b => b.User)
+            .Include(b => b.Book)
+            .ThenInclude(b => b.Shelf)
+            .AsNoTracking()
+            .ToList();
 
-        if (string.IsNullOrEmpty(memberNumber) || memberNumber.Length != 9)
-        {
-            _dataGridBorrows.ClearFilter("MemberNumber");
-            return;
-        }
+        _dataGridBorrows.DataSource = _borrows.Select(b => new EmployeeBorrowViewModel(b)).ToList();
+        _dataGridBorrows.Columns["Id"].Visible = false;
+        _dataGridBorrows.Columns["MemberNumber"].HeaderText = "Üye No";
+        _dataGridBorrows.Columns["MemberFullName"].HeaderText = "Üye Adı";
+        _dataGridBorrows.Columns["BookName"].HeaderText = "Kitap Adı";
+        _dataGridBorrows.Columns["BookISBN"].HeaderText = "ISBN";
+        _dataGridBorrows.Columns["BookPageCount"].HeaderText = "Sayfa Sayısı";
+        _dataGridBorrows.Columns["BookShelf"].HeaderText = "Raf";
+        _dataGridBorrows.Columns["BorrowDate"].HeaderText = "Alış Tarihi";
+        _dataGridBorrows.Columns["ReturnDate"].HeaderText = "İade Tarihi";
+        _dataGridBorrows.Columns["IsDelivered"].HeaderText = "İade Edildi Mi?";
+    }
+}
 
-        _dataGridBorrows.Columns["MemberNumber"].FilterPredicates.Add(new FilterPredicate() { FilterType = FilterType.Equals, FilterValue = memberNumber, PredicateType = PredicateType.Or });
-        _dataGridBorrows.View.RefreshFilter();
+internal class EmployeeBorrowViewModel
+{
+    public EmployeeBorrowViewModel(Borrow borrow)
+    {
+        Id = borrow.Id;
+        BorrowDate = borrow.BorrowDate;
+        ReturnDate = borrow.ReturnDate;
+        IsDelivered = borrow.IsDelivered;
+        MemberNumber = borrow.User!.Username;
+        MemberFullName = $"{borrow.User.Name} {borrow.User.Surname}";
+        BookName = borrow.Book!.Name ?? string.Empty;
+        BookISBN = borrow.Book.ISBN ?? string.Empty;
+        BookPageCount = borrow.Book.PageCount.ToString();
+        BookShelf = borrow.Book.Shelf!.Name;
     }
 
-    private void _txtBoxISBN_TextChanged(object sender, EventArgs e)
-    {
-        string isbn = _txtBoxISBN.Text;
-
-        if (string.IsNullOrEmpty(isbn) || isbn.Length != 13)
-        {
-            _dataGridBorrows.ClearFilter("BookISBN");
-            return;
-        }
-
-        _dataGridBorrows.Columns["BookISBN"].FilterPredicates.Add(new FilterPredicate() { FilterType = FilterType.Equals, FilterValue = isbn, PredicateType = PredicateType.Or });
-        _dataGridBorrows.View.RefreshFilter();
-    }
+    public int Id { get; set; }
+    public DateTime BorrowDate { get; set; }
+    public DateTime? ReturnDate { get; set; }
+    public bool IsDelivered { get; set; }
+    public string MemberNumber { get; set; } = string.Empty;
+    public string MemberFullName { get; set; } = string.Empty;
+    public string BookName { get; set; } = string.Empty;
+    public string BookISBN { get; set; } = string.Empty;
+    public string BookPageCount { get; set; } = string.Empty;
+    public string BookShelf { get; set; } = string.Empty;
 }

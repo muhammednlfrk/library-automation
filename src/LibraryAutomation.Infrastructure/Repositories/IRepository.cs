@@ -5,7 +5,7 @@ namespace LibraryAutomation.Infrastructure.Repositories;
 
 public interface IRepository<TEntity> where TEntity : EntityBase
 {
-    DbContext DbContext { get; }
+    LibraryContext DbContext { get; }
     DbSet<TEntity> DbSet { get; }
     IQueryable<TEntity> Query { get; }
 

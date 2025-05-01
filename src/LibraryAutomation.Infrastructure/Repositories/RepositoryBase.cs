@@ -3,16 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LibraryAutomation.Infrastructure.Repositories;
 
-public abstract class RepositoryBase<TEntity> : IRepository<TEntity> where TEntity : EntityBase, new()
+public abstract class RepositoryBase<TEntity>(LibraryContext dbContext) : IRepository<TEntity> where TEntity : EntityBase
 {
-    protected RepositoryBase(DbContext dbContext)
-    {
-        DbContext = dbContext;
-        DbSet = dbContext.Set<TEntity>();
-    }
-
-    public DbContext DbContext { get; }
-    public DbSet<TEntity> DbSet { get; }
+    public LibraryContext DbContext { get; } = dbContext;
+    public DbSet<TEntity> DbSet { get; } = dbContext.Set<TEntity>();
     public IQueryable<TEntity> Query => DbSet.AsQueryable();
     public virtual TEntity? Get(int id) => DbSet.Find(id);
     public virtual ICollection<TEntity> GetAll() => DbSet.AsNoTracking().ToList();
@@ -38,9 +32,7 @@ public abstract class RepositoryBase<TEntity> : IRepository<TEntity> where TEnti
     }
 }
 
-public class GenericReposirtory<TEntity> : RepositoryBase<TEntity> where TEntity : EntityBase, new()
+public class GenericReposirtory<TEntity>(LibraryContext dbContext) : RepositoryBase<TEntity>(dbContext)
+    where TEntity : EntityBase
 {
-    public GenericReposirtory(DbContext dbContext) : base(dbContext)
-    {
-    }
 }

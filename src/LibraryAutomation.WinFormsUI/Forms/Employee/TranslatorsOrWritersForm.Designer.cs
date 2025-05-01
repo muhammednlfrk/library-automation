@@ -50,6 +50,7 @@ partial class TranslatorsOrWritersForm
         _btnUpdate.Size = new Size(28, 28);
         _btnUpdate.Style.Image = Properties.Resources.edit;
         _btnUpdate.TabIndex = 43;
+        _btnUpdate.Click += _btnUpdate_Click;
         // 
         // _btnDelete
         // 
@@ -62,6 +63,7 @@ partial class TranslatorsOrWritersForm
         _btnDelete.Size = new Size(28, 28);
         _btnDelete.Style.Image = Properties.Resources.unavailable;
         _btnDelete.TabIndex = 42;
+        _btnDelete.Click += _btnDelete_Click;
         // 
         // _btnAdd
         // 
@@ -109,7 +111,7 @@ partial class TranslatorsOrWritersForm
         // _txtBoxSearch
         // 
         _txtBoxSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-        _txtBoxSearch.BeforeTouchSize = new Size(100, 23);
+        _txtBoxSearch.BeforeTouchSize = new Size(472, 23);
         _txtBoxSearch.Location = new Point(5, 21);
         _txtBoxSearch.Name = "_txtBoxSearch";
         _txtBoxSearch.Size = new Size(472, 23);
@@ -132,6 +134,7 @@ partial class TranslatorsOrWritersForm
         StartPosition = FormStartPosition.CenterScreen;
         Style.MdiChild.IconHorizontalAlignment = HorizontalAlignment.Center;
         Style.MdiChild.IconVerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;
+        Load += TranslatorsOrWritersForm_Load;
         ((System.ComponentModel.ISupportInitialize)_dataGridPeople).EndInit();
         ((System.ComponentModel.ISupportInitialize)_txtBoxSearch).EndInit();
         ResumeLayout(false);

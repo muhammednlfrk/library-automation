@@ -36,7 +36,7 @@ partial class MemberManagementForm
         _dataGridMember = new Syncfusion.WinForms.DataGrid.SfDataGrid();
         _btnAdd = new Syncfusion.WinForms.Controls.SfButton();
         _btnDelete = new Syncfusion.WinForms.Controls.SfButton();
-        _btnResetPassword = new Syncfusion.WinForms.Controls.SfButton();
+        _btnUpdate = new Syncfusion.WinForms.Controls.SfButton();
         ((System.ComponentModel.ISupportInitialize)_txtBoxNumber).BeginInit();
         ((System.ComponentModel.ISupportInitialize)_txtBoxSearch).BeginInit();
         ((System.ComponentModel.ISupportInitialize)_dataGridMember).BeginInit();
@@ -103,8 +103,7 @@ partial class MemberManagementForm
         _dataGridMember.Style.CheckBoxStyle.IndeterminateBorderColor = Color.FromArgb(0, 120, 215);
         _dataGridMember.Style.HyperlinkStyle.DefaultLinkColor = Color.FromArgb(0, 120, 215);
         _dataGridMember.TabIndex = 22;
-        _dataGridMember.Text = "sfDataGrid1";
-        _dataGridMember.Click += _dataGridMember_Click;
+        _dataGridMember.SelectionChanged += _dataGridMember_SelectionChanged;
         // 
         // _btnAdd
         // 
@@ -129,25 +128,27 @@ partial class MemberManagementForm
         _btnDelete.Size = new Size(28, 28);
         _btnDelete.Style.Image = Properties.Resources.unavailable;
         _btnDelete.TabIndex = 28;
+        _btnDelete.Click += _btnDelete_Click;
         // 
-        // _btnResetPassword
+        // _btnUpdate
         // 
-        _btnResetPassword.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        _btnResetPassword.Enabled = false;
-        _btnResetPassword.Font = new Font("Segoe UI Semibold", 9F);
-        _btnResetPassword.ImageSize = new Size(16, 16);
-        _btnResetPassword.Location = new Point(683, 16);
-        _btnResetPassword.Name = "_btnResetPassword";
-        _btnResetPassword.Size = new Size(28, 28);
-        _btnResetPassword.Style.Image = Properties.Resources.password_reset;
-        _btnResetPassword.TabIndex = 29;
+        _btnUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        _btnUpdate.Enabled = false;
+        _btnUpdate.Font = new Font("Segoe UI Semibold", 9F);
+        _btnUpdate.ImageSize = new Size(16, 16);
+        _btnUpdate.Location = new Point(683, 16);
+        _btnUpdate.Name = "_btnUpdate";
+        _btnUpdate.Size = new Size(28, 28);
+        _btnUpdate.Style.Image = Properties.Resources.edit;
+        _btnUpdate.TabIndex = 29;
+        _btnUpdate.Click += _btnUpdate_Click;
         // 
         // MemberManagementForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(784, 461);
-        Controls.Add(_btnResetPassword);
+        Controls.Add(_btnUpdate);
         Controls.Add(_btnDelete);
         Controls.Add(_btnAdd);
         Controls.Add(_lblNumber);
@@ -177,5 +178,5 @@ partial class MemberManagementForm
     private Syncfusion.WinForms.DataGrid.SfDataGrid _dataGridMember;
     private Syncfusion.WinForms.Controls.SfButton _btnAdd;
     private Syncfusion.WinForms.Controls.SfButton _btnDelete;
-    private Syncfusion.WinForms.Controls.SfButton _btnResetPassword;
+    private Syncfusion.WinForms.Controls.SfButton _btnUpdate;
 }

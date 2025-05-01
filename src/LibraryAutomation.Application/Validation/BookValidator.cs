@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using LibraryAutomation.Domain.Entities;
 
-namespace LibraryAutomation.Application.Validation;
+namespace LibraryAutomation.ApplicationL.Validation;
 
 public class BookValidator : AbstractValidator<Book>
 {
@@ -25,15 +25,14 @@ public class BookValidator : AbstractValidator<Book>
 
         RuleFor(x => x.ISBN)
             .NotEmpty().WithMessage("Book ISBN cannot be empty.")
-            .Length(10, 13).WithMessage("Book ISBN must be between 10 and 13 characters.")
-            .Matches(@"^\d{9}[\dX]$").WithMessage("Book ISBN must be a valid ISBN-10 or ISBN-13 format.");
+            .Length(10, 13).WithMessage("Book ISBN must be between 10 and 13 characters.");
 
         RuleFor(x => x.StockQuantity)
             .NotEmpty().WithMessage("Book stock quantity cannot be empty.")
             .GreaterThanOrEqualTo(0).WithMessage("Book stock quantity must be greater than or equal to 0.");
 
         RuleFor(x => x.BorrowQuantity)
-            .NotEmpty().WithMessage("Book borrow quantity cannot be empty.")
+            .NotNull().WithMessage("Book borrow quantity cannot be empty.")
             .GreaterThanOrEqualTo(0).WithMessage("Book borrow quantity must be greater than or equal to 0.");
     }
 }
