@@ -3,6 +3,7 @@ using LibraryAutomation.Infrastructure.Repositories;
 using LibraryAutomation.WinFormsUI.Extensions;
 using LibraryAutomation.WinFormsUI.Theme;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Syncfusion.WinForms.Controls;
 using Syncfusion.WinForms.DataGrid.Events;
 
@@ -11,11 +12,12 @@ namespace LibraryAutomation.WinFormsUI.Forms.Employee;
 public partial class PublishersForm : SfForm
 {
     private readonly IRepository<Publisher> _publisherRepository;
+    private readonly IMemoryCache _memoryCache;
 
     private ICollection<Publisher> _publishers = null!;
     private Publisher? _selectedPublisher;
 
-    public PublishersForm(IRepository<Publisher> publisherRepository)
+    public PublishersForm(IRepository<Publisher> publisherRepository, IMemoryCache memoryCache)
     {
         InitializeComponent();
 
@@ -27,6 +29,7 @@ public partial class PublishersForm : SfForm
         _btnDelete.MakeOutline();
 
         _publisherRepository = publisherRepository;
+        _memoryCache = memoryCache;
 
         loadPublishers();
     }
@@ -55,6 +58,7 @@ public partial class PublishersForm : SfForm
     {
         Program.ServiceProvider.Get<AddOrUpdatePublisherForm>().ShowDialog();
         loadPublishers();
+        _memoryCache.GetPublishers(true);
     }
 
     private void _btnUpdate_Click(object sender, EventArgs e)
@@ -69,6 +73,7 @@ public partial class PublishersForm : SfForm
         form.PublisherToUpdate = _selectedPublisher;
         form.ShowDialog();
         loadPublishers();
+        _memoryCache.GetPublishers(true);
     }
 
     private void _btnDelete_Click(object sender, EventArgs e)
@@ -83,6 +88,7 @@ public partial class PublishersForm : SfForm
         {
             _publisherRepository.Delete(_selectedPublisher.Id);
             loadPublishers();
+            _memoryCache.GetPublishers(true);
         }
     }
 

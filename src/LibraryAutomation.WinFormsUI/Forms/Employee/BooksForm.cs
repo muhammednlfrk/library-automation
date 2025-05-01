@@ -58,6 +58,7 @@ public partial class BooksForm : SfForm
         AddOrUpdateBookForm addOrUpdateForm = Program.ServiceProvider.Get<AddOrUpdateBookForm>();
         addOrUpdateForm.IsUpdate = false;
         addOrUpdateForm.ShowDialog();
+        loadBooks();
     }
 
     private void _btnUpdate_Click(object sender, EventArgs e)

@@ -388,9 +388,9 @@ partial class AddOrUpdateBookForm
         _lblPublisher.Location = new Point(5, 746);
         _lblPublisher.Name = "_lblPublisher";
         _lblPublisher.Position = Syncfusion.Windows.Forms.Tools.AutoLabelPosition.Top;
-        _lblPublisher.Size = new Size(27, 15);
+        _lblPublisher.Size = new Size(53, 15);
         _lblPublisher.TabIndex = 37;
-        _lblPublisher.Text = "Raf:";
+        _lblPublisher.Text = "Yayınevi:";
         // 
         // _cmbBoxPublisher
         // 
@@ -415,13 +415,13 @@ partial class AddOrUpdateBookForm
         // 
         _picBoxBook.Anchor = AnchorStyles.Top;
         _picBoxBook.BorderStyle = BorderStyle.FixedSingle;
-        _picBoxBook.Image = Properties.Resources.dune;
         _picBoxBook.Location = new Point(138, 5);
         _picBoxBook.Name = "_picBoxBook";
         _picBoxBook.Size = new Size(128, 200);
         _picBoxBook.SizeMode = PictureBoxSizeMode.Zoom;
         _picBoxBook.TabIndex = 38;
         _picBoxBook.TabStop = false;
+        _picBoxBook.Click += _picBoxBook_Click;
         // 
         // _imageFileSelector
         // 
@@ -476,7 +476,9 @@ partial class AddOrUpdateBookForm
         Controls.Add(_btnSave);
         Icon = (Icon)resources.GetObject("$this.Icon");
         MaximizeBox = false;
+        MaximumSize = new Size(420, 870);
         MinimizeBox = false;
+        MinimumSize = new Size(420, 870);
         Name = "AddOrUpdateBookForm";
         StartPosition = FormStartPosition.CenterScreen;
         Style.MdiChild.IconHorizontalAlignment = HorizontalAlignment.Center;

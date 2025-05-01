@@ -3,6 +3,7 @@ using LibraryAutomation.Infrastructure.Repositories;
 using LibraryAutomation.WinFormsUI.Extensions;
 using LibraryAutomation.WinFormsUI.Theme;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Syncfusion.WinForms.Controls;
 using Syncfusion.WinForms.DataGrid.Events;
 
@@ -11,11 +12,12 @@ namespace LibraryAutomation.WinFormsUI.Forms.Employee;
 public partial class ShelfsForm : SfForm
 {
     private readonly IRepository<Shelf> _shelfRepository;
+    private readonly IMemoryCache _memoryCache;
 
     private ICollection<Shelf> _shelfs = null!;
     private Shelf? _selectedShelf;
 
-    public ShelfsForm(IRepository<Shelf> shelfRepository)
+    public ShelfsForm(IRepository<Shelf> shelfRepository, IMemoryCache memoryCache)
     {
         InitializeComponent();
 
@@ -28,6 +30,7 @@ public partial class ShelfsForm : SfForm
 
         _shelfRepository = shelfRepository;
         loadShelfs();
+        _memoryCache = memoryCache;
     }
 
     private void _txtBoxSearch_TextChanged(object sender, EventArgs e) => _dataGridShelfs.SearchController.Search(_txtBoxSearch.Text);
@@ -52,6 +55,7 @@ public partial class ShelfsForm : SfForm
     {
         Program.ServiceProvider.Get<AddOrUpdateShelfForm>().ShowDialog();
         loadShelfs();
+        _memoryCache.GetShelfs(true);
     }
 
     private void _btnUpdate_Click(object sender, EventArgs e)
@@ -63,6 +67,7 @@ public partial class ShelfsForm : SfForm
         form.ShelfToUpdate = _selectedShelf;
         form.ShowDialog();
         loadShelfs();
+        _memoryCache.GetShelfs(true);
     }
 
     private void _btnDelete_Click(object sender, EventArgs e)
@@ -74,6 +79,7 @@ public partial class ShelfsForm : SfForm
         {
             _shelfRepository.Delete(_selectedShelf.Id);
             loadShelfs();
+            _memoryCache.GetShelfs(true);
         }
     }
 

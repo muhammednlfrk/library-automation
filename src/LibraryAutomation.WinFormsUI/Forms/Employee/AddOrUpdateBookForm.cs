@@ -251,4 +251,9 @@ public partial class AddOrUpdateBookForm : SfForm
             }
         }
     }
+
+    private void _picBoxBook_Click(object sender, EventArgs e)
+    {
+        _btnSelectFile.PerformClick();
+    }
 }

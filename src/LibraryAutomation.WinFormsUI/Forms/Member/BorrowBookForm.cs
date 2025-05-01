@@ -119,6 +119,7 @@ public partial class BorrowBookForm : SfForm
             return;
         }
         User? user = _userRepository.DbSet
+            .AsNoTracking()
             .Include(u => u.Borrows)
             .FirstOrDefault(u => u.Username == _memberNumber);
         if (_selectedBook.StockQuantity <= _selectedBook.BorrowQuantity)
@@ -141,7 +142,7 @@ public partial class BorrowBookForm : SfForm
             BookId = _selectedBook.Id,
             UserId = user.Id,
             BorrowDate = DateTime.Now,
-            ReturnDate = DateTime.Now.AddDays(30),
+            ReturnDate = null,
             IsDelivered = false
         };
         using IDbContextTransaction transaction = _bookRepository.DbContext.Database.BeginTransaction();

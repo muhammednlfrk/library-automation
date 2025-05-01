@@ -3,6 +3,7 @@ using LibraryAutomation.Infrastructure.Repositories;
 using LibraryAutomation.WinFormsUI.Extensions;
 using LibraryAutomation.WinFormsUI.Theme;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Syncfusion.WinForms.Controls;
 using Syncfusion.WinForms.DataGrid.Events;
 
@@ -12,6 +13,7 @@ public partial class TranslatorsOrWritersForm : SfForm
 {
     private readonly IRepository<Translator> _translatorRepository;
     private readonly IRepository<Writer> _writerRepository;
+    private readonly IMemoryCache _memoryCache;
 
     private ICollection<Translator> _translators = null!;
     private Translator? _selectedTranslator;
@@ -20,7 +22,7 @@ public partial class TranslatorsOrWritersForm : SfForm
 
     public bool IsTranslator { get; set; }
 
-    public TranslatorsOrWritersForm(IRepository<Translator> translatorRepository, IRepository<Writer> writerRepository)
+    public TranslatorsOrWritersForm(IRepository<Translator> translatorRepository, IRepository<Writer> writerRepository, IMemoryCache memoryCache)
     {
         InitializeComponent();
 
@@ -33,6 +35,7 @@ public partial class TranslatorsOrWritersForm : SfForm
 
         _translatorRepository = translatorRepository;
         _writerRepository = writerRepository;
+        _memoryCache = memoryCache;
     }
 
     #region Events
@@ -84,6 +87,14 @@ public partial class TranslatorsOrWritersForm : SfForm
         addOrUpdateForm.IsUpdate = false;
         addOrUpdateForm.ShowDialog();
         loadData();
+        if (IsTranslator)
+        {
+            _memoryCache.GetTranslators(true);
+        }
+        else
+        {
+            _memoryCache.GetWriters(true);
+        }
     }
 
     private void _btnUpdate_Click(object sender, EventArgs e)
@@ -91,8 +102,18 @@ public partial class TranslatorsOrWritersForm : SfForm
         AddOrUpdateTranslatorOrWriterForm addOrUpdateForm = Program.ServiceProvider.Get<AddOrUpdateTranslatorOrWriterForm>();
         addOrUpdateForm.IsTranslator = IsTranslator;
         addOrUpdateForm.IsUpdate = true;
+        if (IsTranslator) addOrUpdateForm.TranslatorToUpdate = _selectedTranslator!;
+        else addOrUpdateForm.WriterToUpdate = _selectedWriter;
         addOrUpdateForm.ShowDialog();
         loadData();
+        if (IsTranslator)
+        {
+            _memoryCache.GetTranslators(true);
+        }
+        else
+        {
+            _memoryCache.GetWriters(true);
+        }
     }
 
     private void _btnDelete_Click(object sender, EventArgs e)
@@ -108,6 +129,7 @@ public partial class TranslatorsOrWritersForm : SfForm
             if (result != DialogResult.Yes)
                 return;
             _translatorRepository.Delete(_selectedTranslator.Id);
+            _memoryCache.GetTranslators(true);
         }
         else
         {
@@ -120,6 +142,7 @@ public partial class TranslatorsOrWritersForm : SfForm
             if (result != DialogResult.Yes)
                 return;
             _writerRepository.Delete(_selectedWriter.Id);
+            _memoryCache.GetWriters(true);
         }
         loadData();
     }

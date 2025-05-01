@@ -65,7 +65,7 @@ internal static class Program
         // Add DbContexts.
         services.AddDbContext<LibraryContext>(options =>
         {
-            options.UseSqlServer("Server=(LocalDb)\\MSSQLLocalDB;Database=LibraryDB;User Id=sa;Password=1;TrustServerCertificate=True;");
+            options.UseSqlServer("Server=78.135.85.185;Database=LibraryDB;User Id=sa;Password=rp71Dfmr07yQ;TrustServerCertificate=True;");
         });
         services.AddScoped<LibraryContext>();
         // Add mem cache.
