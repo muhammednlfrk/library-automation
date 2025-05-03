@@ -37,7 +37,6 @@ public partial class AddOrUpdateBookForm : SfForm
         _btnSave.MakePrimary();
         _btnCancel.MakeOutline();
         _btnSelectFile.MakeOutline();
-        Text = IsUpdate ? "Kitap Güncelle" : "Yeni Kitap Ekle";
 
         _cmbBoxWriters.ShowToolTip = true;
         _cmbBoxWriters.ShowClearButton = true;
@@ -199,6 +198,7 @@ public partial class AddOrUpdateBookForm : SfForm
     {
         if (IsUpdate)
         {
+            Text = "Kitap Güncelle";
             if (BookToUpdate == null)
             {
                 MessageBox.Show("Güncellenecek kitap bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -236,6 +236,10 @@ public partial class AddOrUpdateBookForm : SfForm
                 _cmbBoxTranslators.SelectedItems.Add(_translators.FirstOrDefault(x => x.Id == translator.Id));
 
             _picBoxBook.Image = Image.FromFile(BookImageManager.GetBookImagePath(BookToUpdate!.Id.ToString()));
+        }
+        else
+        {
+            Text = "Yeni Kitap Ekle";
         }
     }
 

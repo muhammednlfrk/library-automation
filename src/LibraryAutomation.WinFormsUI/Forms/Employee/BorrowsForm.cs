@@ -28,7 +28,7 @@ public partial class BorrowsForm : SfForm
         _borrows = _borrowRepository.DbSet
             .Include(b => b.User)
             .Include(b => b.Book)
-            .ThenInclude(b => b.Shelf)
+            .ThenInclude(b => b!.Shelf)
             .AsNoTracking()
             .ToList();
 
