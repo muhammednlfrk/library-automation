@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Syncfusion.Data;
 using Syncfusion.WinForms.Controls;
 using Syncfusion.WinForms.DataGrid.Events;
+using Syncfusion.Windows.Forms;
 
 namespace LibraryAutomation.WinFormsUI.Forms.Member;
 
@@ -87,7 +88,7 @@ public partial class BorrowBookForm : SfForm
 
             if (user == null)
             {
-                MessageBox.Show("Kullanıcı bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show("Kullanıcı bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 _txtBoxNumber.Clear();
                 _txtBoxNumber.Focus();
                 _btnBorrow.Enabled = false;
@@ -104,6 +105,7 @@ public partial class BorrowBookForm : SfForm
         }
         else
         {
+            _lblInformation.Text = string.Empty;
             _memberNumber = string.Empty;
             _activateBorrow = false;
             _btnBorrow.Enabled = false;
@@ -122,17 +124,17 @@ public partial class BorrowBookForm : SfForm
             .FirstOrDefault(u => u.Username == _memberNumber);
         if (_selectedBook.StockQuantity <= _selectedBook.BorrowQuantity)
         {
-            MessageBox.Show("Bu kitap ödünç alınamaz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBoxAdv.Show("Bu kitap ödünç alınamaz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
         if (user == null)
         {
-            MessageBox.Show("Kullanıcı bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBoxAdv.Show("Kullanıcı bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
         if (user.Borrows!.Where(x => x.IsDelivered == false).Count() >= 3)
         {
-            MessageBox.Show("En fazla 3 kitap ödünç alabilirsiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBoxAdv.Show("En fazla 3 kitap ödünç alabilirsiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
         Borrow borrow = new()
@@ -149,7 +151,7 @@ public partial class BorrowBookForm : SfForm
         _borrowRepository.Add(borrow);
         _bookRepository.Update(targetBook);
         transaction.Commit();
-        MessageBox.Show("Kitap ödünç alındı.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        MessageBoxAdv.Show("Kitap ödünç alındı.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
         loadBooks();
     }
 

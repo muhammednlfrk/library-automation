@@ -8,19 +8,19 @@ public class WriterValidator : AbstractValidator<Writer>
     public WriterValidator()
     {
         RuleFor(x => x.Name)
-            .NotEmpty().WithMessage("Name is required.")
-            .MaximumLength(64).WithMessage("Name must not exceed 64 characters.");
+            .NotEmpty().WithMessage("Ad alanı zorunludur.")
+            .MaximumLength(128).WithMessage("Ad alanı en fazla 128 karakter olabilir.");
 
         RuleFor(x => x.Surname)
-            .NotEmpty().WithMessage("Surname is required.")
-            .MaximumLength(64).WithMessage("Surname must not exceed 64 characters.");
+            .NotEmpty().WithMessage("Soyad alanı zorunludur.")
+            .MaximumLength(128).WithMessage("Soyad alanı en fazla 128 karakter olabilir.");
 
         RuleFor(x => x.BirthDate)
-            .NotEmpty().WithMessage("Birth date is required.")
-            .LessThan(DateTime.Now).WithMessage("Birth date must be in the past.");
+            .NotEmpty().WithMessage("Doğum tarihi alanı zorunludur.")
+            .LessThan(DateTime.Now).WithMessage("Doğum tarihi geçmiş bir tarih olmalıdır.");
 
         RuleFor(x => x.DeathDate)
-            .LessThan(DateTime.Now).WithMessage("Death date must be in the past.")
-            .GreaterThan(x => x.BirthDate).WithMessage("Death date must be after birth date.");
+            .LessThan(DateTime.Now).WithMessage("Ölüm tarihi geçmiş bir tarih olmalıdır.")
+            .GreaterThan(x => x.BirthDate).WithMessage("Ölüm tarihi doğum tarihinden sonra olmalıdır.");
     }
 }

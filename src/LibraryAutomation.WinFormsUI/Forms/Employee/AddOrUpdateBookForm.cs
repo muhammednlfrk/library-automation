@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Caching.Memory;
 using Syncfusion.WinForms.Controls;
+using Syncfusion.Windows.Forms;
 
 namespace LibraryAutomation.WinFormsUI.Forms.Employee;
 
@@ -83,36 +84,36 @@ public partial class AddOrUpdateBookForm : SfForm
     {
         if (!IsUpdate && _bookRepository.GetAll().Any(b => b.Name == _txtBoxName.Text))
         {
-            MessageBox.Show("Bu isimde bir kitap zaten mevcut.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBoxAdv.Show("Bu isimde bir kitap zaten mevcut.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
 
         if (!IsUpdate && _bookRepository.GetAll().Any(b => b.ISBN == _txtBoxISBN.Text))
         {
-            MessageBox.Show("Bu ISBN numarasına sahip bir kitap zaten mevcut.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBoxAdv.Show("Bu ISBN numarasına sahip bir kitap zaten mevcut.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
 
         if (!IsUpdate && _bookRepository.GetAll().Any(b => b.OriginName == _txtBoxOriginName.Text))
         {
-            MessageBox.Show("Bu isimde bir kitap zaten mevcut.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBoxAdv.Show("Bu isimde bir kitap zaten mevcut.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
 
         if (!_dateEditPublishDate.Value.HasValue)
         {
-            MessageBox.Show("Lütfen geçerli bir yayın tarihi giriniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBoxAdv.Show("Lütfen geçerli bir yayın tarihi giriniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
 
         if (_cmbBoxWriters.SelectedItems.Count == 0)
         {
-            MessageBox.Show("Lütfen en az bir yazar seçiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBoxAdv.Show("Lütfen en az bir yazar seçiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
         if (_cmbBoxTranslators.SelectedItems.Count == 0)
         {
-            MessageBox.Show("Lütfen en az bir çevirmen seçiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBoxAdv.Show("Lütfen en az bir çevirmen seçiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
 
@@ -143,7 +144,7 @@ public partial class AddOrUpdateBookForm : SfForm
         if (!result.IsValid)
         {
             string errorMessage = string.Join(Environment.NewLine, result.Errors.Select(e => e.ErrorMessage));
-            MessageBox.Show(errorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBoxAdv.Show(errorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
 
@@ -213,7 +214,7 @@ public partial class AddOrUpdateBookForm : SfForm
             Text = "Kitap Güncelle";
             if (BookToUpdate == null)
             {
-                MessageBox.Show("Güncellenecek kitap bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show("Güncellenecek kitap bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
                 return;
             }

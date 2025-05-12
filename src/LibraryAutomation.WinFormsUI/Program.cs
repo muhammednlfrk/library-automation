@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
 using Syncfusion.Licensing;
+using Syncfusion.Windows.Forms;
 using Syncfusion.WinForms.Controls;
 using System.Reflection;
 
@@ -54,8 +55,7 @@ internal static class Program
         memoryCache.GetShelfs(true);
 
         // Run the application.
-        IPasswordHashGenerator passwordHashGenerator = ServiceProvider.Get<IPasswordHashGenerator>();
-        string password = passwordHashGenerator.HashPassword("123456");
+        MessageBoxAdv.ThemeName = "LibraryTheme";
         SelectLoginTypeForm initialForm = ServiceProvider.Get<SelectLoginTypeForm>();
         Application.Run(initialForm);
     }

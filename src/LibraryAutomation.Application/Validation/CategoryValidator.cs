@@ -8,7 +8,7 @@ public class CategoryValidator : AbstractValidator<Category>
     public CategoryValidator()
     {
         RuleFor(x => x.Name)
-            .NotEmpty().WithMessage("Category name is required.")
-            .MaximumLength(64).WithMessage("Category name must not exceed 64 characters.");
+            .NotEmpty().WithMessage("Kategori adı zorunludur.")
+            .MaximumLength(128).WithMessage("Kategori adı en fazla 128 karakter olabilir.");
     }
 }

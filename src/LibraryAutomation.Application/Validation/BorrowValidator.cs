@@ -8,13 +8,13 @@ public class BorrowValidator : AbstractValidator<Borrow>
     public BorrowValidator()
     {
         RuleFor(b => b.BorrowDate)
-            .NotEmpty().WithMessage("Borrow date is required.");
+            .NotEmpty().WithMessage("Ödünç alma tarihi zorunludur.");
 
         RuleFor(b => b.ReturnDate)
-            .NotEmpty().WithMessage("Return date is required.")
-            .GreaterThan(b => b.BorrowDate).WithMessage("Return date must be after the borrow date.");
+            .NotEmpty().WithMessage("İade tarihi zorunludur.")
+            .GreaterThan(b => b.BorrowDate).WithMessage("İade tarihi, ödünç alma tarihinden sonra olmalıdır.");
 
         RuleFor(b => b.IsDelivered)
-            .NotNull().WithMessage("IsDelivered status is required.");
+            .NotNull().WithMessage("Teslim durumu zorunludur.");
     }
 }

@@ -8,31 +8,31 @@ public class BookValidator : AbstractValidator<Book>
     public BookValidator()
     {
         RuleFor(x => x.Name)
-            .NotEmpty().WithMessage("Book name cannot be empty.")
-            .Length(1, 532).WithMessage("Book name must be between 1 and 532 characters.");
+            .NotEmpty().WithMessage("Kitap adı zorunludur.")
+            .Length(1, 532).WithMessage("Kitap adı 1 ile 532 karakter arasında olmalıdır.");
 
         RuleFor(x => x.OriginName)
-            .NotEmpty().WithMessage("Book origin name cannot be empty.")
-            .Length(1, 532).WithMessage("Book origin name must be between 1 and 532 characters.");
+            .NotEmpty().WithMessage("Kitabın orijinal adı en fazla 532 karakter olabilir.")
+            .Length(1, 532).WithMessage("Kitabın orijinal adı en fazla 532 karakter olabilir.");
 
         RuleFor(x => x.PublishDate)
-            .NotEmpty().WithMessage("Book publish date cannot be empty.")
-            .LessThanOrEqualTo(DateTime.Now).WithMessage("Book publish date cannot be in the future.");
+            .NotEmpty().WithMessage("Yayın tarihi zorunludur.")
+            .LessThanOrEqualTo(DateTime.Now).WithMessage("Kitap yayın tarihi gelecekte olamaz.");
 
         RuleFor(x => x.PageCount)
-            .NotEmpty().WithMessage("Book page count cannot be empty.")
-            .GreaterThan(0).WithMessage("Book page count must be greater than 0.");
+            .NotEmpty().WithMessage("Sayfa sayısı zorunludur.")
+            .GreaterThan(0).WithMessage("Kitap sayfa sayısı 0'dan büyük olmalıdır.");
 
         RuleFor(x => x.ISBN)
-            .NotEmpty().WithMessage("Book ISBN cannot be empty.")
-            .Length(10, 13).WithMessage("Book ISBN must be between 10 and 13 characters.");
+            .NotEmpty().WithMessage("ISBN zorunludur.")
+            .Length(10, 13).WithMessage("Kitap ISBN'i 10 ile 13 karakter arasında olmalıdır.");
 
         RuleFor(x => x.StockQuantity)
-            .NotEmpty().WithMessage("Book stock quantity cannot be empty.")
-            .GreaterThanOrEqualTo(0).WithMessage("Book stock quantity must be greater than or equal to 0.");
+            .NotEmpty().WithMessage("Stok miktarı zorunludur.")
+            .GreaterThanOrEqualTo(0).WithMessage("Kitap stok miktarı 0'dan büyük veya eşit olmalıdır.");
 
         RuleFor(x => x.BorrowQuantity)
-            .NotNull().WithMessage("Book borrow quantity cannot be empty.")
-            .GreaterThanOrEqualTo(0).WithMessage("Book borrow quantity must be greater than or equal to 0.");
+            .NotEmpty().WithMessage("Ödünç verilen miktar zorunludur.")
+            .GreaterThanOrEqualTo(0).WithMessage("Kitap ödünç verilen miktarı 0'dan büyük veya eşit olmalıdır.");
     }
 }

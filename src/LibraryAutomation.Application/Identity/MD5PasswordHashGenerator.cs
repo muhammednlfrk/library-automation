@@ -16,7 +16,7 @@ public class MD5PasswordHashGenerator : IPasswordHashGenerator
     public bool VerifyPassword(string password, string hashedPassword)
     {
         string[] parts = hashedPassword.Split(':');
-        if (parts.Length != 2) throw new ArgumentException("invalid password format");
+        if (parts.Length != 2) throw new ArgumentException("geçersiz şifre formatı");
 
         string storedHash = parts[0];
         string storedSalt = parts[1];

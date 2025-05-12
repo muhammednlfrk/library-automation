@@ -27,7 +27,6 @@ public partial class MemberMainForm : SfForm
         if (_isExitConfirmed) return;
         e.Cancel = true;
 
-        MessageBoxAdv.ThemeName = "LibraryTheme";
         DialogResult result = MessageBoxAdv.Show(
             owner: this,
             text: "Çıkış yapmak istediğinizden emin misiniz?",

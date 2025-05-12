@@ -6,6 +6,7 @@ using LibraryAutomation.Domain.Enums;
 using LibraryAutomation.Infrastructure.Repositories;
 using LibraryAutomation.WinFormsUI.Theme;
 using Syncfusion.WinForms.Controls;
+using Syncfusion.Windows.Forms;
 
 namespace LibraryAutomation.WinFormsUI.Forms.Employee.Member;
 
@@ -51,14 +52,14 @@ public partial class AddOrUpdateMemberForm : SfForm
     {
         if(_txtBoxPassword.Text != _txtBoxPasswordAgain.Text)
         {
-            MessageBox.Show("Passwords do not match.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBoxAdv.Show("Şifreler eşleşmiyor.", "Doğrulama Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
 
         string[] names = _txtBoxFullName.Text.Split(' ');
         if (names.Length < 2)
         {
-            MessageBox.Show("Please enter both first and last name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBoxAdv.Show("Lütfen hem adı hem de soyadını girin.", "Doğrulama Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
         User targetUser = new()
@@ -75,7 +76,7 @@ public partial class AddOrUpdateMemberForm : SfForm
         if (!validationResult.IsValid)
         {
             string errorMessage = string.Join(Environment.NewLine, validationResult.Errors.Select(e => e.ErrorMessage));
-            MessageBox.Show(errorMessage, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBoxAdv.Show(errorMessage, "Doğrulama Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
 
@@ -106,7 +107,7 @@ public partial class AddOrUpdateMemberForm : SfForm
 
         if (existingUser == null)
         {
-            MessageBox.Show("User not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBoxAdv.Show("Kullanıcı bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
 
@@ -129,7 +130,7 @@ public partial class AddOrUpdateMemberForm : SfForm
 
         if (existingUser != null)
         {
-            MessageBox.Show("Username already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBoxAdv.Show("Kullanıcı adı zaten mevcut.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
 

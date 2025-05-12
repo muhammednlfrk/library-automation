@@ -4,6 +4,7 @@ using LibraryAutomation.WinFormsUI.Theme;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Syncfusion.Data;
+using Syncfusion.Windows.Forms;
 using Syncfusion.WinForms.Controls;
 
 namespace LibraryAutomation.WinFormsUI.Forms.Member;
@@ -140,14 +141,14 @@ public partial class ReturnBookForm : SfForm
             Borrow? targetBorrow = _borrowRepository.DbSet.FirstOrDefault(b => b.Id == _selectedBorrow.Id);
             if (targetBorrow == null)
             {
-                MessageBox.Show("İade edilecek kitap bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show("İade edilecek kitap bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             Book? targetBook = _bookRepository.DbSet.FirstOrDefault(b => b.Id == targetBorrow.BookId);
             if (targetBook == null)
             {
-                MessageBox.Show("İade edilecek kitap bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxAdv.Show("İade edilecek kitap bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

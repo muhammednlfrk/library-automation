@@ -7,7 +7,7 @@ public class PublisherValidator : AbstractValidator<Publisher>
     public PublisherValidator()
     {
         RuleFor(p => p.Name)
-            .NotEmpty().WithMessage("Publisher name is required.")
-            .MaximumLength(128).WithMessage("Publisher name must not exceed 128 characters.");
+            .NotEmpty().WithMessage("Yayınevi adı zorunludur.")
+            .MaximumLength(256).WithMessage("Yayınevi adı en fazla 256 karakter olabilir.");
     }
 }
