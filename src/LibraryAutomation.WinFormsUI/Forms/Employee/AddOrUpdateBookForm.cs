@@ -87,6 +87,18 @@ public partial class AddOrUpdateBookForm : SfForm
             return;
         }
 
+        if (!IsUpdate && _bookRepository.GetAll().Any(b => b.ISBN == _txtBoxISBN.Text))
+        {
+            MessageBox.Show("Bu ISBN numarasına sahip bir kitap zaten mevcut.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
+        if (!IsUpdate && _bookRepository.GetAll().Any(b => b.OriginName == _txtBoxOriginName.Text))
+        {
+            MessageBox.Show("Bu isimde bir kitap zaten mevcut.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
         if (!_dateEditPublishDate.Value.HasValue)
         {
             MessageBox.Show("Lütfen geçerli bir yayın tarihi giriniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);

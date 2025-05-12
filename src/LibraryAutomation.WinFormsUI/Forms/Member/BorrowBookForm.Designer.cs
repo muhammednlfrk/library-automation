@@ -52,6 +52,7 @@ partial class BorrowBookForm
         _lblSearch = new Syncfusion.Windows.Forms.Tools.AutoLabel();
         _lblNumber = new Syncfusion.Windows.Forms.Tools.AutoLabel();
         _txtBoxNumber = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+        _lblInformation = new Syncfusion.Windows.Forms.Tools.AutoLabel();
         ((System.ComponentModel.ISupportInitialize)_dataGridBooks).BeginInit();
         ((System.ComponentModel.ISupportInitialize)_txtBoxISBN).BeginInit();
         ((System.ComponentModel.ISupportInitialize)_pcBoxImage).BeginInit();
@@ -76,7 +77,7 @@ partial class BorrowBookForm
         _dataGridBooks.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
         _dataGridBooks.Location = new Point(5, 56);
         _dataGridBooks.Name = "_dataGridBooks";
-        _dataGridBooks.Size = new Size(650, 537);
+        _dataGridBooks.Size = new Size(650, 591);
         _dataGridBooks.Style.BorderColor = Color.FromArgb(100, 100, 100);
         _dataGridBooks.Style.CheckBoxStyle.CheckedBackColor = Color.FromArgb(0, 120, 215);
         _dataGridBooks.Style.CheckBoxStyle.CheckedBorderColor = Color.FromArgb(0, 120, 215);
@@ -92,10 +93,9 @@ partial class BorrowBookForm
         _txtBoxISBN.BeforeTouchSize = new Size(196, 23);
         _txtBoxISBN.Location = new Point(3, 225);
         _txtBoxISBN.Name = "_txtBoxISBN";
+        _txtBoxISBN.ReadOnly = true;
         _txtBoxISBN.Size = new Size(264, 23);
         _txtBoxISBN.TabIndex = 0;
-        _txtBoxISBN.Click += _txtBoxISBN_Click;
-        _txtBoxISBN.TextChanged += _txtBoxISBN_TextChanged;
         // 
         // _lblISBN
         // 
@@ -112,7 +112,6 @@ partial class BorrowBookForm
         // 
         _pcBoxImage.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         _pcBoxImage.BorderStyle = BorderStyle.FixedSingle;
-        _pcBoxImage.Image = Properties.Resources.dune;
         _pcBoxImage.Location = new Point(71, 3);
         _pcBoxImage.Name = "_pcBoxImage";
         _pcBoxImage.Size = new Size(128, 200);
@@ -124,9 +123,9 @@ partial class BorrowBookForm
         // 
         _txtBoxName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         _txtBoxName.BeforeTouchSize = new Size(196, 23);
-        _txtBoxName.Enabled = false;
         _txtBoxName.Location = new Point(3, 270);
         _txtBoxName.Name = "_txtBoxName";
+        _txtBoxName.ReadOnly = true;
         _txtBoxName.Size = new Size(264, 23);
         _txtBoxName.TabIndex = 4;
         // 
@@ -145,9 +144,9 @@ partial class BorrowBookForm
         // 
         _txtBoxWriter.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         _txtBoxWriter.BeforeTouchSize = new Size(196, 23);
-        _txtBoxWriter.Enabled = false;
         _txtBoxWriter.Location = new Point(3, 315);
         _txtBoxWriter.Name = "_txtBoxWriter";
+        _txtBoxWriter.ReadOnly = true;
         _txtBoxWriter.Size = new Size(264, 23);
         _txtBoxWriter.TabIndex = 6;
         // 
@@ -166,9 +165,9 @@ partial class BorrowBookForm
         // 
         _txtBoxOriginalName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         _txtBoxOriginalName.BeforeTouchSize = new Size(196, 23);
-        _txtBoxOriginalName.Enabled = false;
         _txtBoxOriginalName.Location = new Point(3, 360);
         _txtBoxOriginalName.Name = "_txtBoxOriginalName";
+        _txtBoxOriginalName.ReadOnly = true;
         _txtBoxOriginalName.Size = new Size(264, 23);
         _txtBoxOriginalName.TabIndex = 8;
         // 
@@ -187,9 +186,9 @@ partial class BorrowBookForm
         // 
         _txtBoxPublisher.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         _txtBoxPublisher.BeforeTouchSize = new Size(196, 23);
-        _txtBoxPublisher.Enabled = false;
         _txtBoxPublisher.Location = new Point(3, 405);
         _txtBoxPublisher.Name = "_txtBoxPublisher";
+        _txtBoxPublisher.ReadOnly = true;
         _txtBoxPublisher.Size = new Size(264, 23);
         _txtBoxPublisher.TabIndex = 10;
         // 
@@ -208,9 +207,9 @@ partial class BorrowBookForm
         // 
         _txtBoxPublishDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         _txtBoxPublishDate.BeforeTouchSize = new Size(196, 23);
-        _txtBoxPublishDate.Enabled = false;
         _txtBoxPublishDate.Location = new Point(3, 450);
         _txtBoxPublishDate.Name = "_txtBoxPublishDate";
+        _txtBoxPublishDate.ReadOnly = true;
         _txtBoxPublishDate.Size = new Size(264, 23);
         _txtBoxPublishDate.TabIndex = 12;
         // 
@@ -229,9 +228,9 @@ partial class BorrowBookForm
         // 
         _txtBoxPageCount.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         _txtBoxPageCount.BeforeTouchSize = new Size(196, 23);
-        _txtBoxPageCount.Enabled = false;
         _txtBoxPageCount.Location = new Point(3, 495);
         _txtBoxPageCount.Name = "_txtBoxPageCount";
+        _txtBoxPageCount.ReadOnly = true;
         _txtBoxPageCount.Size = new Size(264, 23);
         _txtBoxPageCount.TabIndex = 14;
         // 
@@ -288,9 +287,9 @@ partial class BorrowBookForm
         panel1.Controls.Add(_txtBoxOriginalName);
         panel1.Controls.Add(_txtBoxPublisher);
         panel1.Controls.Add(_lblOriginName);
-        panel1.Location = new Point(661, 5);
+        panel1.Location = new Point(661, 56);
         panel1.Name = "panel1";
-        panel1.Size = new Size(270, 588);
+        panel1.Size = new Size(270, 591);
         panel1.TabIndex = 17;
         // 
         // _txtBoxSearch
@@ -337,12 +336,24 @@ partial class BorrowBookForm
         _txtBoxNumber.WordWrap = false;
         _txtBoxNumber.TextChanged += _txtBoxNumber_TextChanged;
         // 
+        // _lblInformation
+        // 
+        _lblInformation.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        _lblInformation.AutoSize = false;
+        _lblInformation.Location = new Point(661, 8);
+        _lblInformation.Name = "_lblInformation";
+        _lblInformation.Size = new Size(270, 42);
+        _lblInformation.TabIndex = 17;
+        _lblInformation.Text = "Lütfen geçerli bir üye numarası giriniz.";
+        _lblInformation.TextAlign = ContentAlignment.MiddleLeft;
+        // 
         // BorrowBookForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         CancelButton = _btnCancel;
-        ClientSize = new Size(936, 598);
+        ClientSize = new Size(936, 652);
+        Controls.Add(_lblInformation);
         Controls.Add(_lblNumber);
         Controls.Add(_txtBoxNumber);
         Controls.Add(_txtBoxSearch);
@@ -399,4 +410,5 @@ partial class BorrowBookForm
     private Syncfusion.Windows.Forms.Tools.AutoLabel _lblSearch;
     private Syncfusion.Windows.Forms.Tools.AutoLabel _lblNumber;
     private Syncfusion.Windows.Forms.Tools.TextBoxExt _txtBoxNumber;
+    private Syncfusion.Windows.Forms.Tools.AutoLabel _lblInformation;
 }

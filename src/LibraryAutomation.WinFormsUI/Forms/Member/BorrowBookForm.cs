@@ -70,12 +70,10 @@ public partial class BorrowBookForm : SfForm
         }
     }
 
-    private void _txtBoxISBN_Click(object sender, EventArgs e)
+    private void _txtBoxSearch_TextChanged(object sender, EventArgs e)
     {
-        _txtBoxISBN.SelectAll();
+        _dataGridBooks.SearchController.Search(_txtBoxSearch.Text);
     }
-
-    private void _txtBoxSearch_TextChanged(object sender, EventArgs e) => _dataGridBooks.SearchController.Search(_txtBoxSearch.Text);
 
     private void _txtBoxNumber_TextChanged(object sender, EventArgs e)
     {
@@ -83,6 +81,21 @@ public partial class BorrowBookForm : SfForm
 
         if (!string.IsNullOrEmpty(memberNumber) && memberNumber.Length == 9)
         {
+            User? user = _userRepository.DbSet
+                .AsNoTracking()
+                .FirstOrDefault(u => u.Username == memberNumber);
+
+            if (user == null)
+            {
+                MessageBox.Show("Kullanıcı bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _txtBoxNumber.Clear();
+                _txtBoxNumber.Focus();
+                _btnBorrow.Enabled = false;
+                _lblInformation.Text = "Lütfen geçerli bir üye numarası giriniz.";
+                return;
+            }
+            
+            _lblInformation.Text = $"Hoş geldiniz {user.Name} {user.Surname}.";
             _memberNumber = memberNumber;
             _activateBorrow = true;
 
@@ -95,20 +108,6 @@ public partial class BorrowBookForm : SfForm
             _activateBorrow = false;
             _btnBorrow.Enabled = false;
         }
-    }
-
-    private void _txtBoxISBN_TextChanged(object sender, EventArgs e)
-    {
-        string isbn = _txtBoxISBN.Text;
-
-        if (string.IsNullOrEmpty(isbn) || isbn.Length != 13)
-        {
-            _dataGridBooks.ClearFilters();
-            return;
-        }
-
-        _dataGridBooks.Columns["ISBN"].FilterPredicates.Add(new FilterPredicate() { FilterType = FilterType.Equals, FilterValue = isbn, PredicateType = PredicateType.Or });
-        _dataGridBooks.View.RefreshFilter();
     }
 
     private void _btnBorrow_Click(object sender, EventArgs e)
@@ -190,7 +189,7 @@ public partial class BorrowBookForm : SfForm
         _dataGridBooks.Columns["ShelfName"].HeaderText = "Raf";
         _dataGridBooks.Columns["Writers"].HeaderText = "Yazarlar";
         _dataGridBooks.Columns["Translators"].HeaderText = "Çevirmenler";
-        _dataGridBooks.Columns["Categories"].HeaderText = "Kategoriler";
+        _dataGridBooks.Columns["Categories"].Visible = false;
     }
 
     private void clearSelectedBook()
